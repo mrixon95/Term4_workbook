@@ -309,7 +309,7 @@ We can create a new program and run it to retrieve our **JSON object ** from the
 
 We can read it in to our python file by using the `json.load()` method.
 
-Here is an example of reading the **JSON object**from the file
+Here is an example of reading the **JSON object** from the file
 
 ### json.load()  method
 
@@ -417,3 +417,268 @@ https://www.programiz.com/python-programming/json
 https://pynative.com/make-python-class-json-serializable/
 
 https://docs.python.org/3/library/json.html
+
+
+
+## Question 11
+
+
+
+In Python, an **Object** is an instance of a class.  Therefore, before our **custom objects can be manipulated**, the classes need to be defined. **Classes** are the blueprints that are used in order to instantiate an object. Many instances can be created from the one class. Classes often have attributes including primitive data structures such as numbers, strings and lists. Also classes often have methods which have one or more parameters. These methods give the class functionality and the ability to **change its own attributes**.
+
+
+
+### Initially set object attributes
+
+Initially the **object's attributes** can be **set** by passing arguments into the constructor.
+
+
+
+In our example, the **Animal class** takes the following arguments: name, age, vertebrate,  number_of_legs, can_fly.
+
+The **Dog class** takes the following arguments: name, age, breed
+
+The **Parrot class** takes the following arguments: name, age, color_feather
+
+
+
+```python
+class Pet():
+	
+    def __init__(self, name, age, vertebrate,  number_of_legs, can_fly):
+        self._name = name
+        self._age = age
+        self._vertebrate = vertebrate
+        self._number_of_legs = number_of_legs
+        self._can_fly = can_fly
+        
+    def greeting(self):
+        return "I am " + self._name + " and am " + self._age + " years old."
+    
+    def aged_a_year(self):
+        self._age += 1
+    
+    @property
+    def vertebrate(self):
+        return self._vertebrate
+
+    @property
+    def number_of_legs(self):
+        return self._number_of_legs
+    
+    @property
+    def can_fly(self, x):
+        return self._can_fly
+
+    @vertebrate.setter
+    def vertebrate(self, x):
+        if type(x) == bool:
+            self._vertebrate = x
+
+    @number_of_legs.setter
+    def number_of_legs(self, x):
+        if x >= 0:
+            self._number_of_legs = x
+    
+    @can_fly.setter
+    def can_fly(self, x):
+        if type(x) == bool:
+            self._can_fly = x
+
+
+        
+
+class Dog(Animal):
+
+    number_of_dogs = 0
+    
+    def __init__(self, name, age, breed):
+        super().__init__(name, age, True, 4, False)
+        self._breed = breed
+        self.number_of_dogs += 1
+
+    @classmethod
+    def count(cls):
+        return "The total number of dogs is " + str(cls.number_of_dogs) + "."
+
+    @staticmethod
+    def make_noise():
+        return "bark! bark!"
+
+    @property
+    def breed(self):
+        return self._breed
+
+    @breed.setter
+    def breed(self, breed):
+        self._breed = breed
+
+
+    
+
+class Parrot(Animal):
+
+    number_of_parrots = 0
+    
+    def __init__(self, name, age, color_feather):
+        super().__init__(name, age, True, 2, True)
+        self._color_feather = color_feather
+    
+    @staticmethod
+    def make_noise():
+        return "Sqwark! Sqwark!"
+
+    @classmethod
+    def count(cls):
+        return "The total number of parrots is " + str(cls.number_of_parrots) + "."
+
+    @property
+    def color_feather(self):
+        return self._color_feather
+
+    @color_feather.setter
+    def color_feather(self, color_feather):
+        if type(color_feather) == str:
+            self._color_feather = color_feather
+        
+        
+```
+
+
+
+### Manipulate object attributes
+
+For **manipulating the object's attributes**, I have made sure that each of the classes have been defined with **setters**. Also, to verify that an **object has been manipulated**, I have **@property** annotations above methods that return the attribute value of the object. We can see what the attribute's value has been changed too.
+
+
+
+Let's create **two objects** and **manipulate their attributes** by using **setters**. Also note that all the code is continued from the previous code snippet.
+
+```python
+polly = Parrot("Polly", 2, "Red")
+
+charlie = Dog("Charlie", 4, "Golden retriever")
+
+# Output is: "Initially, the Parrot's feather color is Red"
+print("Initially, the Parrot's feather color is " + polly.color_feather) 
+
+
+# Change the object's color_feather attribute to Blue
+polly.color_feather = 'Blue'
+
+# Output is: "Now, the Parrot's feather color has been changed to Blue"
+print("Now, the Parrot's feather color has been changed to " + polly.color_feather)
+
+
+# Change the object's color_feather attribute to Green
+polly.color_feather = 'Green'
+
+# Output is: "Again, the Parrot's feather color has been changed. It is now Green"
+print("Again, the Parrot's feather color has been changed. It is now " + polly.color_feather)
+
+```
+
+
+
+Above, we see how the `color_feather` attribute was **manipulated multiple times**. 
+
+Also, to check that it was **manipulated to a string value**, there is an if condition that the new value must pass.
+
+`if type(color_feather) == str:`
+
+
+
+### Manipulating variables shared by all objects
+
+Next, notice that the class variable `number_of_parrots` is **incremented** each time a new parrot object is created.
+
+Likewise, the class variable `number_of_dogs` is **incremented** each time a new dog object is created.
+
+Finally, the class variable, `number_of_pets` is **incremented** when either a new dog or new parrot is created.
+
+
+
+```python
+
+# Output: The total number of parrots is 1
+print(Parrot.count())
+
+# Output: The total number of dogs is 1
+print(Dog.count())
+
+# Output: The total number of animals is 2
+print(Pet.count())
+
+
+
+sunny = Parrot("Sunny", 2, "Red")
+tweety = Parrot("Tweety", 8, "Grey")
+coco = Parrot("Coco", 5, "Orange")
+
+oscar = Dog("Oscar", 6, "Poodle")
+ollie = Dog("Ollie", 4, "Beagle")
+
+
+
+# Output: The total number of parrots is 4
+print(Parrot.count())
+
+# Output: The total number of dogs is 3
+print(Dog.count())
+
+# Output: The total number of pets is 7
+print(Pet.count())
+```
+
+
+
+**Class variables below to all objects** so by changing the class variable we are also **manipulating an attribute shared by all of the objects**.
+
+
+
+### Delete an attribute
+
+Another way to **manipulate** **an object** is to **delete one of its attributes**
+
+
+
+```python
+print("The color of coco's feather is ")
+# Output: "Orange"
+print(coco._color_feather)
+
+# Delete the _color_feather attribute from the coco object
+del coco._color_feather
+
+
+
+print("The attribute has been deleted from the coc object. Let's verify that the attribute is indeed gone.")
+
+# Output: AttributeError: 'Parrot' object has no attribute '_color_feather'
+print(coco._color_feather)
+```
+
+
+
+### Delete an object
+
+We can also **manipulate** **an object** by **deleting it**
+
+
+
+```python
+# Output: <__main__.Dog object at 0x7fa10fc97070>
+print(ollie)
+
+del ollie
+
+# Output: NameError: name 'ollie' is not defined
+print(ollie)
+```
+
+
+
+**References**
+
+https://www.programiz.com/python-programming/class
+
