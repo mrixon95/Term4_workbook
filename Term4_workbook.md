@@ -211,6 +211,8 @@ for model in models:
 
 JSON can be **manipulated** by converting a JSON string into a python object  It can be done in a python file by using the `loads` method from the `json` module. 
 
+Other features of JSON are that it is human-readable, widely used in other languages and by default can only represent a subset of Python built-in data types. 
+
 
 
 ### json.loads()  method
@@ -233,7 +235,7 @@ print(sporting_interests_dict["sports"])
 
 
 
-We can change the contents of the python object and then convert the **python object** back into a **JSON string**.
+In the code above, `sporting_interests_dict` is a python object. We can change the contents of the python object and then convert the **python object** back into a **JSON string**.
 
  It can be done in a python file by using the `dumps` method from the `json` module. 
 
@@ -241,7 +243,7 @@ We can change the contents of the python object and then convert the **python ob
 
 ### json.dumps()  method
 
-Here is an example of a **python object** being changed and then converted into a **JSON string** using the `json.dumps()` method
+Here is an example of a **python object** having its contents changed and then being converted into a **JSON string** using the `json.dumps()` method
 
 ```python
 # continued from the previous python code
@@ -267,7 +269,7 @@ Let's convert it back again to a **python object**
 # continued from the previous python code
 
 # change the JSON string to python object
-sporting_interests = json.loads(sporting_interests_dict)
+sporting_interests_dict = json.loads(sporting_interests)
 
 ```
 
@@ -277,7 +279,7 @@ We can write the new sporting interests to a file as **JSON**.
 
 ### json.dump()  method
 
-Below the `json.dump()` convert the python object to a **JSON** **string** and then writes it to a file called `new_file.txt`
+Below the `json.dump()` convert the python object to a **JSON object** and then writes it to a file called `new_file.txt`
 
 ```python
 # continued from the previous python code
@@ -289,9 +291,9 @@ with open('new_file.txt', 'w') as json_file:
 
 
 
-The JSON string is now located in the file called `new_file.txt`. We can exit our python program and the JSON string will still be left in the `new_file.txt` file. 
+The JSON object is now located in the file called `new_file.txt`. We can exit our python program and the JSON object will still be left in the `new_file.txt` file. 
 
-Our file contains a **JSON string** and looks like this
+Here is a look at our file which contains the **JSON object**
 
 ```json
 {"name": "Michael", 
@@ -301,17 +303,17 @@ Our file contains a **JSON string** and looks like this
 
 
 
-We can create a new program and run it to retrieve our **JSON string** from the file.
+We can create a new program and run it to retrieve our **JSON object ** from the file.
 
 
 
 We can read it in to our python file by using the `json.load()` method.
 
-Here is an example of reading the **JSON string** from the file
+Here is an example of reading the **JSON object**from the file
 
 ### json.load()  method
 
-Here is an example of reading the **JSON string** from the file using the `json.load()` method.
+Here is an example of reading the **JSON object** from the file using the `json.load()` method.
 
 ```python
 import json
@@ -331,9 +333,76 @@ print(data)
 
 
 
-Above the **load, loads, dump and dumps** methods were used to convert from **JSON string** to **Python** and **Python** to **JSON string**. They all dealt with primitive Python types that have a direct JSON equivalent. Sadly, the JSON encoder is limited in that it can only serialize those basic data types such as lists, strings and numbers. 
+Above the **load, loads, dump and dumps** methods were used to convert from **JSON** to **Python** and **Python** to **JSON**. They all dealt with primitive Python types that have a direct JSON equivalent. Sadly, the JSON encoder is limited in that it can **only serialize basic data types** such as lists, strings and numbers. 
 
-A Python Class cannot be so simply encoded into JSON string. Likewise a JSON string cannot be so easily decoded into a python object. 
+An instance of a Python Class cannot be so simply encoded into JSON. Likewise JSON cannot be so easily decoded into an instance of a Python class.
+
+
+
+### Serialising using JSONEncoder
+
+Instead, what can be used is a **JSONEncoder**. The **JSONEncoder** has a `default()` method which defines how the object `o` is to be serialised. Whenever we execute `JSONEncoder.encode(object)`, the `default()` method will be used on any objects which are not natively JSON serialisable.
+
+An easy way to encode an object is as a JSON object.
+
+For example
+
+```python
+import json
+from json import JSONEncoder
+
+class Student:
+    def __init__(self, name, age, location):
+        self.name = name
+        self.age = age
+        self.location = location
+        
+# JSONEncoder
+class StudentEncoder(JSONEncoder):
+    def default(self, o):
+        dictionary = o.__dict__
+        dictionary["__student__"] = True # I include this so we know that the object type is student
+        return dictionary
+
+student = Student("Michael", 25, "Melbourne")
+        
+print("After being encoded, it will look like this")
+print(StudentEncoder().encode(employee))
+
+print(type(studentJSONData)) # Output: <class 'str'>
+print(studentJSONData) # Output: {"name": "Michael", "age": 25, "location": "Melbourne"}
+```
+
+
+
+### Deserialising
+
+We also can go backwards by decoding the JSON object back into a python object of type Student. In order to do this, we will just get the name, age and location values from the json object, use them to create a new Student object and return it.
+
+The decode_student function will return the new Student object using the values from the JSON object.
+
+```python
+# continue from above code
+
+def decode_student(dct):
+    if "__student__" in dct:
+        return Student(dct["name"], dct["age"], dct["location"])
+    return dct
+
+
+student_object = json.loads(studentJSONData, object_hook=decode_student)
+
+print("Type of student object: " + type(student_object)) # Type of student object: <class '__main__.Student'>
+print("Name: " + student_object.name) # Name: Michael
+print("Age: " + str(student_object.age)) # Age: 25
+print("Location: " + student_object.location) # Location: Melbourne
+```
+
+
+
+In summary, the json module has methods for manipulating data and storing it in a file as a JSON data type. JSON is human-readable and has directly equivalent data types in python. The code snippets above showed how it could be used with both primitive as well as custom data types.
+
+
 
 
 
@@ -344,3 +413,7 @@ https://realpython.com/python-json/
 https://pynative.com/python-json/
 
 https://www.programiz.com/python-programming/json
+
+https://pynative.com/make-python-class-json-serializable/
+
+https://docs.python.org/3/library/json.html
