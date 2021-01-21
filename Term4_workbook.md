@@ -964,7 +964,7 @@ These are different kinds of numbers.
 
 An **int** is a positive or negative whole number, including 0. Numbers of type **int** **do not have a fractional part**.
 
-In addition, integers can be in a different base than 10. For example, integers can be in base 2, 8 or 16. In other words, integers can be formatted as binary, octal or hexadecimal values.
+In addition, **integers can be in a different base than 10.** For example, integers can be in base 2, 8, 16 and many others. In other words, integers can be formatted as binary, octal, hexadecimal or many other values.
 
 ```python
 0b1001 # binary value. This is the same as the integer 9 in base 10.
@@ -972,13 +972,52 @@ In addition, integers can be in a different base than 10. For example, integers 
 0xaf # hexidecimal value. This is the same as the integer 191 in base 10
 
 0o32 # octal value. This is the same as the integer 26 in base 10
-
-
 ```
 
 
 
-A float is any real number that **does have a fractional part**. The factional part is denoted by numbers after a decimal point or by scientific notation. For example, **1.5** has a number after the decimal point so it is a **float**. **7.8925e3** is in scientific notation but is still a **float**.
+A **float** is any **real number that** **does have a fractional part**. The factional part is denoted by numbers after a decimal point or by scientific notation. For example, **1.5** has a number after the decimal point so it is a **float**. **7.8925e3** is in scientific notation but is still a **float**. 
+
+On almost all platforms, **Python floats have** **64 bit precision**. The maximum float number is about **1.8 x 10^308**. In other words, a float can have **307 digits** **before the decimal** and there is no problem. After the maximum float number, python will indicate the float value as **inf**. 
+
+```python
+# Output: 1.79e308
+print(1.79e308)
+
+
+# Output: inf
+print(1.8e308)
+```
+
+
+
+Floats are also very precise. In computer hardware, **floating point numbers are approximated by using a sum of base 2 fractions**.
+
+For example, here are some examples of how decimal fractions are represented as a sum of base 2 fractions
+
+```
+![formula](https://render.githubusercontent.com/render/math?math=e^{i \pi} = -1)
+```
+
+0.125 = 1/8
+
+0.59375 = 1/2 + 1/16 + 1/32
+
+0.40625 = 1/4 + 1/8 + 1/32
+
+
+
+In general though the decimal floating-point numbers **can only be approximated by** the binary floating-point numbers.
+
+For example,
+
+0.1 = 1/16 + 1/32 + 1/256 + 1/512 + ...
+
+In base 2, 0.1 is the infinity repeating fraction 0.00011001100110011001100...
+
+
+
+On most machines, **floats are approximated using the first 53 bits** starting from the most significant bit.
 
 **Complex numbers** have a real and an imaginary component. If a and b are real numbers and i is the square root of -1, then all imaginary numbers can be written in the form **z = a + bi**.
 
