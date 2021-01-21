@@ -582,7 +582,7 @@ print("Again, the Parrot's feather color has been changed. It is now " + polly.c
 
 Above, we see how the `color_feather` attribute was **manipulated multiple times**. 
 
-Also, to check that it was **manipulated to a string value**, there is an if condition that the new value must pass.
+Also, to ensure that it would be **manipulated to a string value**, there is an if condition that the new value must pass.
 
 `if type(color_feather) == str:`
 
@@ -636,7 +636,7 @@ print(Pet.count())
 
 
 
-### Delete an attribute
+### Delete an attribute of an object
 
 Another way to **manipulate** **an object** is to **delete one of its attributes**
 
@@ -660,7 +660,7 @@ print(coco._color_feather)
 
 
 
-### Delete an object
+### Delete the object itself
 
 We can also **manipulate** **an object** by **deleting it**
 
@@ -682,3 +682,289 @@ print(ollie)
 
 https://www.programiz.com/python-programming/class
 
+
+
+## Question 10
+
+
+
+An **array** stores multiple items in one single variable and the items it holds can be both indexed and manipulated. In Python, **an array of items that can be manipulated is called a** **list**. 
+
+Here is an example of a list.
+
+```python
+colors = ['red', 'yellow', 'green']
+```
+
+
+
+### Append
+
+The list can be **manipulated** by appending a new item to the end of the list.
+
+Let's append the color 'blue' to the end of the `colors` list.
+
+```python
+colors.append('blue')
+
+# Output: ['red', 'yellow', 'green', 'blue']
+print(colors)
+```
+
+
+
+### Pop
+
+The list can have its **last item removed** by popping it from the list.
+
+Let's pop the last item in the **colors** list.
+
+
+
+```python
+colors.pop() # removes 'blue'
+
+
+# Output: ['red', 'yellow', 'green']
+print(colors)
+```
+
+
+
+Also a specific item within the list can be removed by using the pop method and **specifying its index position**.
+
+Let's pop the item at the 1st index position.
+
+
+
+```python
+colors.pop(1) # removes 'yellow'
+
+
+# Output: ['red', 'green']
+print(colors)
+```
+
+
+
+
+
+### Insert
+
+The insert method will insert a specified value into a specified index position within the list. 
+
+The syntax `list.insert(i, elem)` means that the element `elem` will be inserted into the `ith` position. All the elements after `elem` are moved **one position to the right**.
+
+Note that the index positions starts at 0.
+
+Let's insert the color `'orange'` into the `1st` position. The items `'yellow'` and `'green'` will move one position to the right.
+
+
+
+```python
+colors.insert(1, "orange") # insert the string 'orange' into the 1st position in the list.
+
+# Output: ['red', 'orange', yellow', 'green']
+print(colors)
+```
+
+
+
+
+
+### Modify
+
+Let's modify an item in the list. Instead of 'orange', lets change the color to be 'olive'. In order to modify the item 'orange', we need to **index it and also specify its new value**.
+
+The syntax looks like **ListName[Index of item to modify] = new value** 
+
+
+
+```python
+colors[1] = "olive" # modify the element in the 1st position of the list to be the string 'olive'.
+
+# Output: ['red', 'olive', yellow', 'green']
+print(colors)
+```
+
+
+
+### Remove
+
+The remove method will **get rid of the first matching element** in a list. It will look through the list from **left to right** and remove the first matching element. If there is no match, the remove method will raise a **ValueError** to signify that the value is not appropriate.
+
+The syntax `list.remove(elem)` means that the first occurrence of the element `elem` will be removed. Also note that the method does not return any value.
+
+Let's remove the first occurrence of the color `'yellow'`.
+
+
+
+```python
+colors.remove("yellow") # remove the first occurance of the string 'yellow' from the list.
+
+# Output: ['red', 'orange', 'green']
+print(colors)
+```
+
+
+
+
+
+### Sort
+
+The sort method will sort the elements in a list. By default, strings are sorted in alphabetical order and numbers are sorted in ascending order. Also the reverse parameter can be set to true in order to sort in descending order.
+
+
+
+```python
+colors.sort() # sort the colors in alphabetical order
+
+# Output: ['green', 'orange', 'red']
+print(colors)
+
+colors.sort(reverse=True) # sort the colors in descending order
+
+# Output: ['red', 'orange', 'green']
+print(colors)
+
+
+
+numbers = [3,5,1,4,2]
+
+numbers.sort() # sort the numbers in ascending order
+
+# Output: [1, 2, 3, 4, 5]
+print(numbers)
+
+numbers.sort(reverse=True) # sort the numbers in descending order
+
+# Output: [5, 4, 3, 2, 1]
+print(numbers)
+
+```
+
+
+
+We can also pass our own key function as an optional parameter. This tells the function how to sort the elements of a list.
+
+Let's sort a list by the length of each element.
+
+
+
+```python
+words = ['bathroom', 'phone', 'wardrobe', 'watch', 'kitchen']
+words.sort(key=len)
+
+# Output: ['phone', 'watch', 'kitchen', 'bathroom', 'wardrobe']
+print(words)
+```
+
+
+
+Finally, be careful to check that all the items in the list can be compared. For example, **integers and strings are not comparable** using the default sorting function.
+
+
+
+```python
+items = ['bathroom', 1, 'wardrobe', 8, 'kitchen']
+
+# Output: TypeError: '<' not supported between instances of 'int' and 'str'
+words.sort()
+
+```
+
+
+
+### Delete
+
+The delete method will **remove one or more items from the list by specifying their index**. Lets delete the items that are located at either index 1 and 2. 
+
+
+
+```python
+words = ['bathroom', 'phone', 'wardrobe', 'watch', 'kitchen']
+del words[1:2]
+
+# Output: ['bathroom', 'watch', 'kitchen']
+print(words)
+```
+
+
+
+
+
+
+
+### Clear
+
+The clear method will empty the list of all its items. It is equivalent to **deleting each and every item** from the list.
+
+
+
+```python
+words = ['bathroom', 'phone', 'wardrobe', 'watch', 'kitchen']
+words.clear()
+
+# Output: []
+print(words)
+```
+
+
+
+
+
+
+
+ **References**
+
+https://www.w3schools.com/python/python_arrays.asp
+
+https://docs.python.org/3/tutorial/datastructures.html
+
+https://www.programiz.com/python-programming/methods/list/remove
+
+https://www.geeksforgeeks.org/python-list-remove/
+
+https://datatofish.com/modify-list-python/
+
+https://www.programiz.com/python-programming/methods/list/sort
+
+
+
+## Question 9
+
+
+
+In python, variables can store many **different datatypes**.
+
+The following are some of the built-in data types.
+
+
+
+**Numeric types**:		int, float, complex
+
+**Sequences:** 			   list, tuple, string
+
+**Mappings:** 				dictionary
+
+**Set types:** 			     sets
+
+
+
+
+
+**Numeric types** 
+
+These are different kinds of numbers.
+
+An **int** is a positive or negative whole number, including 0. Numbers of type **int** **do not have a fractional part**.
+
+A float is any real number that **does have a fractional part**. The factional part is denoted by numbers after a decimal point or by scientific notation. For example, **1.5** has a number after the decimal point so it is a **float**. **7.8925e3** is in scientific notation but is still a **float**.
+
+**Complex numbers** have a real and an imaginary component. If a and b are real numbers and i is the square root of -1, then all imaginary numbers can be written in the form **z = a + bi**.
+
+
+
+https://realpython.com/python-data-types/
+
+https://www.w3schools.com/python/python_datatypes.asp
