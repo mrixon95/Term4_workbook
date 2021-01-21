@@ -182,12 +182,14 @@ https://docs.python.org/3/library/random.html
 ```python
 for model in models:
     make = makes[random_int_from_interval(0, len(makes)-1)]
-    model = models[random_int_from_interval(0, len(models)-1)]
+    model = models[random_int_from_interval(0, len(makes)-1)]
     my_car = Model(make, model)
     print(my_car.show())
 ```
 
 
+
+**INTENTIAL TYPO**!!!!!!! Say what will happen because of the type and then say what it should be.
 
 **Line 26** - The `for loop` iterates through each item in the `models` list and assigns the value to the `model` variable. The `models` list is populated with integers from 1980 to 2019. Therefore, the `mode`l variable will be assigned the value of 1980 during the first iteration of the loop, 1981 for the second iteration of the loop, and so on until it is assigned the value of 2019 for the final iteration of the loop.
 
@@ -333,7 +335,7 @@ print(data)
 
 
 
-Above the **load, loads, dump and dumps** methods were used to convert from **JSON** to **Python** and **Python** to **JSON**. They all dealt with primitive Python types that have a direct JSON equivalent. Sadly, the JSON encoder is limited in that it can **only serialize basic data types** such as lists, strings and numbers. 
+Above the **load, loads, dump and dumps** methods were used to convert from **JSON** to **Python** and **Python** to **JSON**. They all dealt with **primitive Python types that have a direct JSON equivalent**. Sadly, the JSON encoder is limited in that it can **only serialize basic data types** such as lists, strings and numbers. 
 
 An instance of a Python Class cannot be so simply encoded into JSON. Likewise JSON cannot be so easily decoded into an instance of a Python class.
 
@@ -444,6 +446,8 @@ The **Parrot class** takes the following arguments: name, age, color_feather
 
 ```python
 class Pet():
+    
+    number_of_pets = 0
 	
     def __init__(self, name, age, vertebrate,  number_of_legs, can_fly):
         self._name = name
@@ -451,6 +455,7 @@ class Pet():
         self._vertebrate = vertebrate
         self._number_of_legs = number_of_legs
         self._can_fly = can_fly
+        self.number_of_pets += 1
         
     def greeting(self):
         return "I am " + self._name + " and am " + self._age + " years old."
@@ -488,7 +493,7 @@ class Pet():
 
         
 
-class Dog(Animal):
+class Dog(Pet):
 
     number_of_dogs = 0
     
@@ -516,7 +521,7 @@ class Dog(Animal):
 
     
 
-class Parrot(Animal):
+class Parrot(Pet):
 
     number_of_parrots = 0
     
@@ -606,7 +611,7 @@ print(Parrot.count())
 # Output: The total number of dogs is 1
 print(Dog.count())
 
-# Output: The total number of animals is 2
+# Output: The total number of pets is 2
 print(Pet.count())
 
 
@@ -953,15 +958,35 @@ The following are some of the built-in data types.
 
 
 
-**Numeric types** 
+### **Numeric types** 
 
 These are different kinds of numbers.
 
 An **int** is a positive or negative whole number, including 0. Numbers of type **int** **do not have a fractional part**.
 
+In addition, integers can be in a different base than 10. For example, integers can be in base 2, 8 or 16. In other words, integers can be formatted as binary, octal or hexadecimal values.
+
+```python
+0b1001 # binary value. This is the same as the integer 9 in base 10.
+
+0xaf # hexidecimal value. This is the same as the integer 191 in base 10
+
+0o32 # octal value. This is the same as the integer 26 in base 10
+
+
+```
+
+
+
 A float is any real number that **does have a fractional part**. The factional part is denoted by numbers after a decimal point or by scientific notation. For example, **1.5** has a number after the decimal point so it is a **float**. **7.8925e3** is in scientific notation but is still a **float**.
 
 **Complex numbers** have a real and an imaginary component. If a and b are real numbers and i is the square root of -1, then all imaginary numbers can be written in the form **z = a + bi**.
+
+
+
+### Sequences
+
+
 
 
 
