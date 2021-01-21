@@ -1078,14 +1078,263 @@ print (z.imag)
 
 
 
-### Sequences
-
-
-
-
+**References**
 
 https://realpython.com/python-data-types/
 
 https://www.w3schools.com/python/python_datatypes.asp
 
 https://www.geeksforgeeks.org/complex-numbers-in-python-set-1-introduction/
+
+
+
+
+
+### Sequences
+
+Lists, tuples and strings are all a kind of ordered **sequence**. A sequence is made up of elements and each one has an index value that can be used to access that particular element. The element at the first position is at index 0. the element at the second position is at index 1, and so on. Additionally, negative indexing can be used. The element in the last position is at index -1. the element in the second last position is at index -2, and so on. Below is an example of using both positive and negative indexes to access elements in a list.
+
+
+
+
+
+**Positive indexes**
+
+![positive-indexes](.\positive-indexes.png)
+
+
+
+**Negative indexes**
+
+![negative-indexes](.\negative-indexes.png)
+
+Images are from https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/
+
+
+
+ Sequences can be iterated through by an iterator. This means that they can be looped through by a **for loop**.
+
+Here are some examples of looping through sequences and using indexes.
+
+
+
+```python
+animal_list = []
+# Loop through a tuple
+for word in ("horse", "parrot", "dog", "cat"):
+    # Manipulate a list by appending elements to it
+	animal_list.append(word)
+
+animal_string = ""
+# Loop through a list
+for word in animal_list:
+    # Cannot manipulate a string so a new string must be created each time
+    animal_string += word + " "
+
+# Output: "horse parrot dog cat"
+print(animal_string)
+
+# Sequences can be sliced
+# Output: "parrot dog"
+print(animal_string[6:16])
+
+# Sequences can be indexed 
+# Output: "parrot"
+print(animal_list[-3])
+
+
+    
+```
+
+
+
+
+
+**Lists** are a **mutable** type of sequence in that the elements of a list can be changed and a list can have its **length varied** through both appending and deleting elements. Syntactically, the elements in a list are comma-separated and are between square brackets.
+
+For example
+
+```python
+languages = ['Python', 'Java', 'HTML']
+```
+
+Lists can have elements of different types and the elements can be modified and deleted. 
+
+Also new elements can be appended to a list.
+
+For example,
+
+```python
+my_list[2] = 'CSS' # Modifies the 'HTML' element at index 2 to be 'CSS'
+
+# Output: ['Python', 'Java', 'CSS']
+print(my_list)
+
+
+del my_list[1] # Deletes the 'Java' element at index 1
+
+# Output: ['Python', CSS']
+print(my_list)
+
+my_list.append(12345)
+
+# Output: ['Python', CSS', 12345]
+print(my_list)
+
+
+```
+
+
+
+
+
+
+
+**Tuples** are similar to lists in that they are a sequence that contains elements. These elements can be any data types and the elements can be accessed through using their index. 
+
+However, tuples are different to lists in that they are **immutable**, **cannot be copied** and are **not enclosed by** **square brackets**.
+
+Unlike lists, tuples are a **fixed length**. 
+
+
+
+```python
+list_elements = ['AFL', 10, 'shop']
+tuple_elements = ('Dog', True, 'Book', 'Ski')
+
+# The list can be manipulated
+list_names.insert(2, "beach")
+del list_names[0]
+
+
+# Output: [10, 'beach', shop']
+print(list_names)
+
+
+
+# A tuple cannot be manipulated
+# Output: TypeError: 'tuple' object doesn't support item deletion
+del tuple_elements[1]
+
+# Output: TypeError: 'tuple' object does not support item assignment
+tuple_elements[0] = 7
+
+
+```
+
+
+
+
+
+A **string** is a sequence of characters. Unlike lists, strings are **immutable**. This means that they cannot be altered once its declared.
+
+Strings are usually surrounded by either single quotes or double quotes.
+
+For example,
+
+```python
+text1 = 'The man went to the shop'
+text2 = "The weather was sunny"
+```
+
+
+
+However, you can also use triple singe quotes or triple double quotes. This allows you to specify multi-line strings.
+
+Also single and double quotes can be used whenever you like within triple quotes.
+
+```python
+text3 = '''The dog went for a walk.
+			He had a nice time.'''
+text4 = """I enjoyed the summer.
+		   I often go to the beach."""
+```
+
+
+
+Strings cannot have their sequence of characters manipulated. Here are a couple of examples.
+
+```python
+# Output: TypeError: 'str' object doesn't support item deletion
+del text[1]
+
+# Output: TypeError: 'str' object does not support item assignment
+text1[3] = "A"
+
+```
+
+
+
+**References**
+
+https://www.w3schools.com/python/python_lists.asp
+
+https://docs.python.org/3/tutorial/datastructures.html
+
+https://www.tutorialspoint.com/python/python_lists.htm
+
+https://www.geeksforgeeks.org/python-difference-between-list-and-tuple/
+
+https://www.geeksforgeeks.org/python-set-3-strings-lists-tuples-iterations/
+
+https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/
+
+
+
+
+
+
+
+### Mappings
+
+
+
+**Dictionaries**
+
+A dictionary is a data type which contains unordered **key-value pairs**. Unlike the sequences that were described above, dictionaries do not use a range of numbers to index its values. Instead, the **values** in a dictionary **are indexed by keys**. In a dictionary, each key is unique and each key maps to a particular value. Syntactically, the key-value pairs in a dictionary are comma-separated. A colon separates each key and its associated value. The collection of key-value pairs are enclosed by curly braces.
+
+For example, here are key-value pairs in a dictionary. The key represents the country and the value represents its capital city.
+
+```python
+my_dict = {'Australia': 'Canberra', 'France': 'Paris', 'Spain': 'Madrid'}
+```
+
+
+
+Additionally, **the keys in a dictionary must be hashable**. Hashable means that an object can be represented by a fixed sized integer.
+
+```python
+hash_value_of_Australia = hash('Australia')
+hash_value_of_France = hash('France')
+hash_value_of_Spain = hash('Spain')
+
+# Output: 4156992666677561458
+print(hash_value_of_Australia)
+
+# Output: -4276661290130737973
+print(hash_value_of_France)
+
+# Output: -395462626015495190
+print(hash_value_of_Spain)
+```
+
+
+
+
+
+Strings, as previous mentioned, are immutable so they can be used. However, lists are mutable, so they cannot be keys in a dictionary.
+
+
+
+```python
+
+my_dict2 = {['item1', 'item2']: 4}
+```
+
+
+
+
+
+**Numeric types** 
+
+https://realpython.com/iterate-through-dictionary-python/
