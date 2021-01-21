@@ -960,7 +960,9 @@ The following are some of the built-in data types.
 
 ### **Numeric types** 
 
-These are different kinds of numbers.
+These are different kinds of numbers such as **int**, **float** and **complex**.
+
+
 
 An **int** is a positive or negative whole number, including 0. Numbers of type **int** **do not have a fractional part**.
 
@@ -973,6 +975,8 @@ In addition, **integers can be in a different base than 10.** For example, integ
 
 0o32 # octal value. This is the same as the integer 26 in base 10
 ```
+
+
 
 
 
@@ -995,15 +999,17 @@ Floats are also very precise. In computer hardware, **floating point numbers are
 
 For example, here are some examples of how decimal fractions are represented as a sum of base 2 fractions
 
-```
-![formula](https://render.githubusercontent.com/render/math?math=e^{i \pi} = -1)
-```
 
-0.125 = 1/8
 
-0.59375 = 1/2 + 1/16 + 1/32
+![CodeCogsEqn1](.\CodeCogsEqn1.gif)
 
-0.40625 = 1/4 + 1/8 + 1/32
+
+
+![CodeCogsEqn2](.\CodeCogsEqn2.gif)
+
+
+
+![CodeCogsEqn3](.\CodeCogsEqn3.gif)
 
 
 
@@ -1011,15 +1017,64 @@ In general though the decimal floating-point numbers **can only be approximated 
 
 For example,
 
-0.1 = 1/16 + 1/32 + 1/256 + 1/512 + ...
+![CodeCogsEqn4](.\CodeCogsEqn4.gif)
 
-In base 2, 0.1 is the infinity repeating fraction 0.00011001100110011001100...
+In base 2, 0.1 is the infinitely repeating fraction 0.00011001100110011001100...
 
-
+**However there are only a finite number of bits that can be stored in memory**.
 
 On most machines, **floats are approximated using the first 53 bits** starting from the most significant bit.
 
+Therefore, the float value is only **accurate up until that 53th bit**.
+
+
+
+For example, the true decimal value of the binary approximation stored for 0.1 is slightly off.
+
+
+
+```python
+>>> 0.1
+0.10000000000000000555111512
+```
+
+
+
+To keep it manageable, Python just displays the rounded value
+
+
+
+```python
+>>> 1/10
+0.1
+```
+
+
+
+
+
+
+
 **Complex numbers** have a real and an imaginary component. If a and b are real numbers and i is the square root of -1, then all imaginary numbers can be written in the form **z = a + bi**.
+
+
+
+Let's create a complex number using the built-in `complex` class.
+
+```python
+# Initializing real numbers 
+a = 7
+b = -4
+  
+# converting a and b into complex number 
+z = complex(a,b)
+
+# Output is 7
+print (z.real) 
+
+# Output is 4
+print (z.imag) 
+```
 
 
 
@@ -1032,3 +1087,5 @@ On most machines, **floats are approximated using the first 53 bits** starting f
 https://realpython.com/python-data-types/
 
 https://www.w3schools.com/python/python_datatypes.asp
+
+https://www.geeksforgeeks.org/complex-numbers-in-python-set-1-introduction/
