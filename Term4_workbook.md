@@ -1148,6 +1148,33 @@ print(animal_list[-3])
 
 
 
+Additionally, the **membership operator** can be used to test if an item is in a sequence.
+
+`x in my_sequence` will test whether the item x is a member of my_sequence. If x is a member of my_sequence, then `x in my_sequence` will evaluate to True. Otherwise, it will evaluate to False
+
+For example, below we test whether an item is in a sequence.
+
+```python
+
+# Output: True
+print(1 in  [1,2,3,4,5])
+
+# Output: False
+print(-3 in  [1,2,3,4,5])
+
+# Output: True
+print('g' in 'dog')
+
+# Output: False
+print('a' in 'dog')
+
+# Output: True
+print('horse' in ('parrot', 'horse', 'dog'))
+
+# Output: False
+print('ho' in ('parrot', 'horse', 'dog'))
+```
+
 
 
 **Lists** are a **mutable** type of sequence in that the elements of a list can be changed and a list can have its **length varied** through both appending and deleting elements. Syntactically, the elements in a list are comma-separated and are between square brackets.
@@ -1155,12 +1182,12 @@ print(animal_list[-3])
 For example
 
 ```python
-languages = ['Python', 'Java', 'HTML']
+my_list = ['Python', 'Java', 'HTML']
 ```
 
-Lists can have elements of different types and the elements can be modified and deleted. 
+Lists can have elements of different types and the elements can be **modified** and **deleted**. 
 
-Also new elements can be appended to a list.
+Also new elements can be **appended** to a list.
 
 For example,
 
@@ -1183,10 +1210,6 @@ print(my_list)
 
 
 ```
-
-
-
-
 
 
 
@@ -1279,7 +1302,7 @@ https://www.geeksforgeeks.org/python-set-3-strings-lists-tuples-iterations/
 
 https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/
 
-
+https://www.tutorialspoint.com/python/membership_operators_example.htm
 
 
 
@@ -1383,7 +1406,7 @@ https://docs.python.org/2/faq/design.html#how-are-dictionaries-implemented
 
 **Sets**
 
-A **set** is a collection of **unique elements** that are **unordered**. The elements of a set may be of different types but those types must be hashable. As previously mentioned, only immutable items are hashable. This means that **sets cannot accept mutable data types** like a list. Also any duplicate items in a list are automatically ignored.
+A **set** is a collection of **unique elements** that are **unordered**. The elements of a set may be of different types but those types must be hashable. As previously mentioned, only immutable items are hashable. This means that **sets cannot accept data types that are mutable** like a list. Also any duplicate items in a list are automatically ignored.
 
 ```python
 # Output: TypeError: unhashable type: 'list'
@@ -1402,6 +1425,16 @@ print(vowels)
 
 
 
+Sets can contain different but immutable data types.
+
+```python
+# Contains multiple different data types
+set1 = {"house", 12, True, 2.3, "cat"}
+
+```
+
+
+
 Sets are **unordered** so we **can't index** them
 
 ```python
@@ -1411,7 +1444,7 @@ print(vowels[1])
 
 
 
-Sets also have their own set operations like union, intersection, symmetric difference and difference.
+Sets also have their own **set operations** like union, intersection, symmetric difference and difference.
 
 Here are the symbols used in python to do these set operations:
 
@@ -1421,41 +1454,225 @@ Here are the symbols used in python to do these set operations:
 
 
 
-For example, we can have a set of student names in the Maths cohort and a set of student names in the English cohort and we can perform set operations on them.
+For example, we can have a set of student names who study Maths and a set of student names who study English. We can perform set operations on the two sets.
+
+Here are some examples of using the set operations.
 
 ```python
 maths_set = {'Anna', 'Brian', 'Cameron', 'David'}
 english_set = {'Brian', 'David', 'Joe', 'Nick'}
 
 
-# Student in Maths but not in English
-# Output: {'Anna', 'Cameron'}
+# Find students who study Maths but not English. This can be found using the difference symbol: -
+# Output: {'Cameron', 'Anna'}
 print(maths_set - english_set)
 
 
-# Student in Maths and English
-# Output: {'Brian', 'David'}
+# Find students who study both Maths and English. This can be found using the intersection symbol: &
+# Output: {'David', 'Brian'}
 print(maths_set & english_set)
 
 
-# Student in Maths but not in English
-# Output: {'Anna', 'Cameron'}
-print(maths_set - english_set)
+# Find students who study Maths or English or both. This can be found using the intersection symbol: |
+# Output: {'Nick', 'Anna', 'David', 'Brian', 'Joe', 'Cameron'}
+print(maths_set | english_set)
 
 
-# Student in Maths but not in English
-# Output: {'Anna', 'Cameron'}
-print(maths_set - english_set)
+# Find students who only study Maths or who only study English but do not study both. This can be found using the symmetric difference symbol: ^
+# Output: {'Nick', 'Anna', 'Joe', 'Cameron'}
+print(maths_set ^ english_set)
 
 
 ```
 
 
 
+**References**
 
+https://www.programiz.com/python-programming/set
+
+https://www.w3schools.com/python/python_sets.asp
+
+https://www.geeksforgeeks.org/python-set-operations-union-intersection-difference-symmetric-difference/
+
+https://snakify.org/en/lessons/sets/
+
+
+
+
+
+## Question 8
+
+
+
+**Type coercion**  is the implicit conversion of a value from one data type to another data type. It occurs where operands of an operator are of different types and **one operand needs to be automatically converted to an “equivalent” value** of the other operand’s type. 
+
+
+
+Python is a programming language that **does not have type coercion**. Implicit conversion from one object to another cannot occur in the Python language.
+
+For example
+
+```python
+model = 'IPhone'
+version = 3
+
+# Output: TypeError: can only concatenate str (not "int") to str
+print(model + version)
+```
+
+
+
+Instead, we need the number to be **explicitly converted** to a string before using the + operator.
+
+
+
+```python
+model = 'IPhone'
+version = 3
+
+# We need to explicitly convert the number 3 to the string '3' before using the + operator.
+# The str function can be used to convert the number 3 to the string '3'
+
+# Output: 'IPhone3'
+print(model + str(version))
+```
+
+
+
+
+
+**Type coercion exists in the JavaScript language** so lets do some examples. Lets print to the console some maths operations in the JavaScript language that use a string and an integer as its operands.
+
+```javascript
+console.log('2' - 2) // Output is 0. The string '2' was coerced to the number 2.
+console.log('2' * 2) // Output is 4. The string '2' was coerced to the number 2.
+console.log('2' / 2); // Output is 1. The string '2' was coerced to the number 2.
+console.log('2' + 2); // Output is '22'. The number 2 was coerced to the string '2'.
+```
+
+
+
+All the maths operations above **require two arguments of the same data type**, however one value is a string and the other is an integer. This is why one value must be **automatically converted** from one data type to another in order to make the maths operation work. JavaScript did this **type coercion** internally.
+
+
+
+For example, when using the + operator with one number and one string, JavaScript internally coerces the number to become a string.
+
+```javascript
+// number,string
+console.log(36 + 'dog'); // Output is '36dog'. The number 36 was coerced to the string '36'.
+```
+
+
+
+Indeed, whenever using the + operator with one string and another data type, JavaScript internally coerces the string to become an integer.
+
+```javascript
+// boolean, string
+console.log(true + 'cat'); // Output is 'truecat'. The boolean value true was coerced to the string 'true'.
+
+// string, null
+console.log('Three' + null); // Output is 'Threenull'. The null value null was coerced to the string 'null'.
+```
+
+
+
+Here are a few more examples of coercion when using comparison operators.
+
+```javascript
+'4' <= 3 // Output is false. The string value '4' was coerced to the number 4
+
+false < 5 // Output is true. The boolean value false was coerced to the number 0
+
+null < 3 // Output is true. The null value of null was coerced to the number 0
+```
 
 
 
 **References**
 
-https://www.programiz.com/python-programming/set
+https://python-reference.readthedocs.io/en/latest/docs/functions/coerce.html
+
+http://faculty.salina.k-state.edu/tmertz/Java/041datatypesandoperators/07typecoercionandconversion.pdf
+
+https://www.pythonmorsels.com/topics/type-coercion/#:~:text=Numeric%20Types%20and%20Coercion&text=Python%20did%20not%20coerce%20the,objects%20to%20add%20themselves%20together.
+
+https://dev.to/ahmedtahir/what-is-type-coercion-in-javascript-4l96
+
+
+
+## Question 7
+
+
+
+**Control flow ** is where different blocks of code are executed based on whether a condition is true or false. 
+
+![flowchart](C:\Users\Owner\Documents\Coder academy\Term4\Term4_workbook\flowchart.png)
+
+From the site https://core-electronics.com.au/tutorials/control-structure-python.html
+
+
+
+### Sequence
+
+**Without control flow**, a program would just be a list of statements that are **always executed in the same sequential order**, regardless of the variables values. Visually this looks like the flowchart on the left. The code blocks would predictably follow one after another without needing any decisions to be made or any conditions to be evaluated. 
+
+
+
+### Selection
+
+In the middle flow chart, a condition is evaluated at the diamond shape and the program takes one of two actions depending on whether the condition evaluated to true or false. This flowchart represents a selection control flow and is implement in Python using the **if-else statement**. 
+
+For example, below the question is asked whether the age is at least 18. If true, the person can enter the pub. If false, they cannot enter.
+
+```python
+age = 21
+if age > 18:
+	print("Welcome to the pub")
+else: 
+	print("Sorry, you are under the age limit")
+```
+
+
+
+The condition ` age > 18` will evaluate to either true or false depending on the value of age. If it evaluates to true then one block of code is executed, specifically line 3. Otherwise, line 5 is executed.
+
+
+
+### Iteration
+
+Another way of controlling the flow of code is by using **iteration**. An iteration structure is where a block of code is repeated executed as long as a condition holds true or until the end of an iterable object is reached.
+
+For example, below the question is asked of how many bottles are on the wall. If the answer is greater than 0, then the code within the while loop is executed. The condition is checked again and the code is run again. This repeats until the condition evaluates to false. This is known as a **while loop**.
+
+
+
+```python
+bottles = 100
+
+while bottles > 0:
+	print("Keep removing bottles from the wall")
+	bottles -= 1
+```
+
+  
+
+Also a **for loop** is another example of iteration. The code within the for loop will be executed again and again until the sequence is exhausted and there are no more items left that have not been iterated through.
+
+
+
+```python
+for number in [1,2,3,4,5,6,7,8,9,10]:
+    print(number)
+```
+
+  
+
+
+
+**References**
+
+https://jakevdp.github.io/WhirlwindTourOfPython/07-control-flow-statements.html
+
+https://core-electronics.com.au/tutorials/control-structure-python.html
