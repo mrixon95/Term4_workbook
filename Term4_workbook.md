@@ -1100,13 +1100,13 @@ Lists, tuples and strings are all a kind of ordered **sequence**. A sequence is 
 
 **Positive indexes**
 
-![positive-indexes](.\docs\positive-indexes.png)
+![positive_indexes](.\docs\positive_indexes.png)
 
 
 
 **Negative indexes**
 
-![negative-indexes](.\docs\negative-indexes.png)
+![negative_indexes](.\docs\negative_indexes.png)
 
 Images are from https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/
 
@@ -1608,7 +1608,7 @@ https://dev.to/ahmedtahir/what-is-type-coercion-in-javascript-4l96
 
 **Control flow ** is where different blocks of code are executed based on whether a condition is true or false. 
 
-![flowchart](C:\Users\Owner\Documents\Coder academy\Term4\Term4_workbook\docs\flowchart.png)
+![flowchart](.\docs\flowchart.png)
 
 From the site https://core-electronics.com.au/tutorials/control-structure-python.html
 
