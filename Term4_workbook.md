@@ -1301,9 +1301,11 @@ my_dict = {'Australia': 'Canberra', 'France': 'Paris', 'Spain': 'Madrid'}
 
 
 
-Additionally, **the keys in a dictionary must be hashable**. Hashable means that an object can be represented by a fixed sized integer.
+Additionally, **the keys in a dictionary must be hashable**. Hashable means that an object can be represented by a fixed sized integer. Hashes are used to quickly compare dictionary keys during a dictionary lookup. However, **only immutable objects are hashable**.
 
 ```python
+# Strings are hashable because they are immutable
+
 hash_value_of_Australia = hash('Australia')
 hash_value_of_France = hash('France')
 hash_value_of_Spain = hash('Spain')
@@ -1320,21 +1322,140 @@ print(hash_value_of_Spain)
 
 
 
-
-
-Strings, as previous mentioned, are immutable so they can be used. However, lists are mutable, so they cannot be keys in a dictionary.
-
-
+**Strings**, as previous mentioned, are immutable so they **can be used as keys** in dictionaries. However, **lists** are mutable, so they **cannot** be keys in a dictionary.
 
 ```python
-
+# Output: TypeError: unhashable type: 'list'
 my_dict2 = {['item1', 'item2']: 4}
+```
+
+
+
+Instead, we could use a tuple, which is immutable, and therefore hashable.
+
+```python
+my_dict2 = {('item1', 'item2'): 4}
+
+# Output: 4
+print(my_dict2[('item1', 'item2')])
+```
+
+
+
+The values in a dictionary can be updated by simply assigning a new value to an existing key. Also key-value pairs can be deleted by just specifying the key of that key-value pair.
+
+```python
+my_dict3 = {'A': 'Apple', 'B': 'Banana', 'C': 'Carrot'}
+
+# Assign a new value to the key 'A'
+my_dict3['A'] = 'Almond'
+
+# Delete the key-value pair 'B': 'Banana'
+del my_dict3['B']
+
+# {'A': 'Almond', 'C': 'Carrot'}
+print(my_dict3)
 ```
 
 
 
 
 
-**Numeric types** 
+**References**
 
 https://realpython.com/iterate-through-dictionary-python/
+
+https://realpython.com/python-data-types/
+
+https://docs.python.org/3/glossary.html#term-hashable
+
+https://docs.python.org/3/tutorial/datastructures.html
+
+https://docs.python.org/2/faq/design.html#how-are-dictionaries-implemented
+
+
+
+
+
+### Set types
+
+
+
+**Sets**
+
+A **set** is a collection of **unique elements** that are **unordered**. The elements of a set may be of different types but those types must be hashable. As previously mentioned, only immutable items are hashable. This means that **sets cannot accept mutable data types** like a list. Also any duplicate items in a list are automatically ignored.
+
+```python
+# Output: TypeError: unhashable type: 'list'
+vowels = {'a', 'e', ['i', 'o', 'u']}
+
+
+# We try to enter duplicates into a list but the set automatically ignores them
+vowels = {'a', 'e', 'e','e','i','i', 'o', 'o', 'u'}
+
+# Output: 5
+print(len(vowels))
+
+# Output: {'o', 'u', 'i', 'e', 'a'}
+print(vowels)
+```
+
+
+
+Sets are **unordered** so we **can't index** them
+
+```python
+# TypeError: 'set' object is not subscriptable
+print(vowels[1])
+```
+
+
+
+Sets also have their own set operations like union, intersection, symmetric difference and difference.
+
+Here are the symbols used in python to do these set operations:
+
+**Union symbol:    |**				**Intersection symbol:    &** 
+
+**Symmetric difference symbol:    ^**				**Difference symbol:    -** 
+
+
+
+For example, we can have a set of student names in the Maths cohort and a set of student names in the English cohort and we can perform set operations on them.
+
+```python
+maths_set = {'Anna', 'Brian', 'Cameron', 'David'}
+english_set = {'Brian', 'David', 'Joe', 'Nick'}
+
+
+# Student in Maths but not in English
+# Output: {'Anna', 'Cameron'}
+print(maths_set - english_set)
+
+
+# Student in Maths and English
+# Output: {'Brian', 'David'}
+print(maths_set & english_set)
+
+
+# Student in Maths but not in English
+# Output: {'Anna', 'Cameron'}
+print(maths_set - english_set)
+
+
+# Student in Maths but not in English
+# Output: {'Anna', 'Cameron'}
+print(maths_set - english_set)
+
+
+```
+
+
+
+
+
+
+
+**References**
+
+https://www.programiz.com/python-programming/set
