@@ -1710,7 +1710,25 @@ http://anh.cs.luc.edu/handsonPythonTutorial/loops.html
 
 
 
-### Question 1
+## Question 1
+
+
+
+Below I provide an extensive overview of the source control process I follow when coding new projects.
+
+Before I start working on a new project, I created a **new repository** for my project in GitHub. This is done by logging into GitHub and clicking the plus button on the top right hand side of the page.
+
+![create_new_repo](.\docs\create_new_repo.PNG)
+
+The drop down menu has the option *New repository*. Click that option. In the *Create a new repository* page, give the repository a name. In this example below, I enter the name *my_new_repo*. After having entered a name for the new repository, click the green button *create repository* which is located near the bottom of the page .
+
+![name_new_repo](.\docs\name_new_repo.PNG)
+
+Once you have clicked the button *Create repository* you will be redirected to a page with instructions on how to push your new repo to GitHub. We do not yet have a local repository so we must follow the first section of instructions. The first set of instructions look like this.
+
+
+
+![create_new_repo_on_command_line](.\docs\create_new_repo_on_command_line.PNG)
 
 
 
