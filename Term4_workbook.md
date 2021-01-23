@@ -1800,12 +1800,99 @@ Let's say we made changes to the README.md file and also created a docs director
 We should then run the following command
 
 ``` 
-git add README.md docs
+git add README.md docs/
+```
+
+Now commit the edited README.md and the new docs directory to the repository. Be sure to have a short description of what is changes are being committed.
+
+```
+git commit -m "Edited README file and created docs/ directory"
+```
+
+If we run the command below, we should see details about the new commit that was made, as well as the previous commit.
+
+``` 
+git log
+```
+
+Finally, run the command below to upload the new contents of the local repository to the remote repository in GitHub. Make sure to enter your GitHub login and password when prompted.
+
+``` 
+git push
+```
+
+Now if you go to your GitHub repository, you should see the new changes in the README.md file and a new directory named docs.
+
+
+
+### Branching
+
+When working on a new feature, developers usually want an independent line of development to build their new feature in. This is what a branch represents. Its like a brand new working directory and project history. Here's a visual.
+
+
+
+![git_branches_image](./docs/git_branches_image.png)
+
+Image from https://www.atlassian.com/git/tutorials/using-branches
+
+
+
+Developers can create a new branch for their new feature, code the feature on that branch, then merge it back into the main branch. The main branch should only have the final, production ready code. Let's create a new feature branch
+
+```
+git branch new-feature-1
+```
+
+If we want to now move into our new-feature-1 branch, we need to checkout the branch
+
+```
+git checkout new-feature-1
+```
+
+Now whilst we remain in this branch, all our future commits will be in it.
+
+```
+echo "Trying out new branch" >> README.md
+git add README.md
+git commit -m "Updated the README.md"
+
+echo "CCC is awesome" >> README.md
+git add README.md
+git commit -m "Wrote about CCC in README.md"
 ```
 
 
 
+Now checkout to the main branch. These changes won't be there.
 
+```
+git checkout main
+cat README.md
+```
+
+
+
+We can merge the changes into master by running the command below
+
+```
+git merge new-feature-1
+```
+
+
+
+Now the README.md in the main branch has all the changes made from the new-feature-1 branch. 
+
+
+
+### Merging
+
+When working on a new feature, we may conflict with lines of code in the main branch. Let's checkout into the new-feature-1 branch. Now let's say we changed the second line from "CCC is awesome" to "CCC is really cool" and committed it. In the main branch, let's change the second line from "CCC is awesome" to "CCC is lots of fun" and commit it.  The two branches have now diverged from each other. 
+
+Let's say we want the changes in new-feature-1 branch to be merged into the master branch. Git is going to have to create a new commit to merge together the new-feature-1 branch and the master branch. Let's checkout the master branch and merge in the feature-1 branch.
+
+A conflict occurs between these two branches so the automatic merge failed. Git does not know whether to keep "CCC is awesome" or "CCC is lots of fun". If we open up the README.md file, we see that Git has modified it to show us the difference between the two branches. The conflict needs to be resolved by us deleting all the unnecessary modifications made by Git and also delete one of the two lines "CCC is awesome" or "CCC is lots of fun".
+
+Now that we have resolved the conflict. We just add the file to staging and commit as normal.
 
 
 
