@@ -1610,7 +1610,7 @@ https://dev.to/ahmedtahir/what-is-type-coercion-in-javascript-4l96
 
 ![flowchart](./docs/flowchart.png)
 
-From the site https://core-electronics.com.au/tutorials/control-structure-python.html
+Image is from the site https://core-electronics.com.au/tutorials/control-structure-python.html
 
 
 
@@ -1622,7 +1622,7 @@ From the site https://core-electronics.com.au/tutorials/control-structure-python
 
 ### Selection
 
-In the middle flow chart, a condition is evaluated at the diamond shape and the program takes one of two actions depending on whether the condition evaluated to true or false. This flowchart represents a selection control flow and is implement in Python using the **if-else statement**. 
+The selection control structure allows one block of code to be executed if a condition evaluates to true, and another block of code to be executed if a condition evaluates to false. In the middle flow chart, a condition is evaluated in the diamond shape and the program takes one of two actions depending on whether the condition evaluated to true or false. The middle flowchart represents a **selection control flow** and is implement in Python using the **if-else statement**. 
 
 For example, below the question is asked whether the age is at least 18. If true, the person can enter the pub. If false, they cannot enter.
 
@@ -1640,9 +1640,36 @@ The condition ` age > 18` will evaluate to either true or false depending on the
 
 
 
+Moreover, there can be several conditions and several branching statements. In Python, this can be done through using a if-elif-else statement. There must be one if condition but there can be many elif conditions. The final else part is optional.
+
+Here's an example of using multiple elif conditions. Each condition is checked one at a time from top to bottom. Once a condition evaluates to true, all the remaining conditions below it are ignored.
+
+```python
+age = 15
+
+if age < 0 or age > 120:
+	print("Please enter a valid age")
+elif age < 13:
+	print("You are a child")
+elif age < 20:
+	print("You are a teenager")
+elif age < 30:
+	print("You are a young adult")
+elif age < 65:
+	print("You are a mature adult")
+else:
+	print("You are a senior citizen")
+    
+# The output is "You are a teenager". The remaining conditions are ignored.
+```
+
+
+
+
+
 ### Iteration
 
-Another way of controlling the flow of code is by using **iteration**. An iteration structure is where a block of code is repeated executed as long as a condition holds true or until the end of an iterable object is reached.
+Another way of controlling the flow of code is by using **iteration**. An iteration structure is where a block of code is repeatedly executed as long as a condition holds true or until the end of an iterable object is reached. Once the condition becomes false or the end of the iterable object is reached, the program exits the loop and moves down to next part of code.
 
 For example, below the question is asked of how many bottles are on the wall. If the answer is greater than 0, then the code within the while loop is executed. The condition is checked again and the code is run again. This repeats until the condition evaluates to false. This is known as a **while loop**.
 
@@ -1667,7 +1694,7 @@ for number in [1,2,3,4,5,6,7,8,9,10]:
     print(number)
 ```
 
-  
+ 
 
 
 
@@ -1676,3 +1703,14 @@ for number in [1,2,3,4,5,6,7,8,9,10]:
 https://jakevdp.github.io/WhirlwindTourOfPython/07-control-flow-statements.html
 
 https://core-electronics.com.au/tutorials/control-structure-python.html
+
+http://anh.cs.luc.edu/handsonPythonTutorial/loops.html
+
+
+
+
+
+### Question 1
+
+
+
