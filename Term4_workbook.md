@@ -1716,6 +1716,8 @@ http://anh.cs.luc.edu/handsonPythonTutorial/loops.html
 
 Below I provide an extensive **overview of the** **source control process** I follow when coding new projects. 
 
+### Problems that source control addresses
+
 Before I begin, the problem that source control addresses should be explained. In a development team, multiple developers are working on the one project. They often want to make frequent changes to the project's code and want to repeatedly update the project with the new code they have written. Soon, many revisions of the code are made and some developers may try to change the same lines of code in a file but in different ways. This will lead to a conflict which must be resolved. Also it is hard to keep track of what the most up-to-date version of the project is since many developers are working on it at the same time. Many changes to the code are made by different developers and it soon can become very complex. Additionally, a developer may want to revert back to a previous version of the project or see what changes another developer made to his code. This can quickly become very disorganised and hard to track.
 
 A source control system is needed. The **system keep tracks of all the changes being made to the project** over the development process. Also, the tasks that each developer does can be separated through them having their own **branches to work on**. The management system allows each developer to isolate their work from other developers by working on their own branch. The **source of truth for the project is kept on the main branch**. Also to be able to effectively collaborate on the project, a remote repository can be hosted on the internet so that all developers can see the project latest updates. Once a developer's new code is ready to be saved to the main branch, they can commit and merge their code onto the main branch and push it to the remote repository. This way, all the other developers can see their latest code.
@@ -1723,6 +1725,8 @@ A source control system is needed. The **system keep tracks of all the changes b
 **Conflicts** can occur when merging code from a developer's own branch on to the main branch. For example, a conflict arises because a file was deleted on the main branch but was edited on a developer's branch and now that developer now wants to merge his/her work onto the main branch. Another conflict example could be that one developer made an edit to a line in a file and merged it on the main branch and now another developer wants to merge a different edit to the same line in the same file. In both cases, there is a conflict that must be resolved. 
 
 
+
+### Create Git repository
 
 Before I start going through conflict resolution, I will go through creating a new project using a popular source control version called **Git**. The files for a particular project should all be stored in the same location. This is what a **repository** will allow us to do. Git repositories can be stored on **many websites that provide the git version control software**, these include GitLab, Beanstalk, PerForce and others. I will use the popular site called **GitHub**. This is where I will store the repository for my new project so that other developers can access it. The repository will **manage and store all the revisions of the project**. 
 
@@ -1732,11 +1736,11 @@ Before I start going through conflict resolution, I will go through creating a n
 
 As mentioned, I use **GitHub** so the code below is specific to setting up a repository in GitHub. I create a new repository for my new project by logging into my GitHub account and clicking the plus button on the top right hand side of the page.
 
-![create_new_repo](.\docs\create_new_repo.PNG)
+![create_new_repo](./docs/create_new_repo.PNG)
 
 The drop down menu has the option *New repository*. Click that option. In the *Create a new repository* page, give the repository a name. In this example below, I enter the name *my_new_repo*. After having entered a name for the new repository, click the green button *create repository* which is located near the bottom of the page .
 
-![name_new_repo](.\docs\name_new_repo.PNG)
+![name_new_repo](./docs/name_new_repo.PNG)
 
 Once you have clicked the button *Create repository* you will be redirected to a page with instructions on how to push your new repo to GitHub. We do not yet have a local repository so we must follow the first section of instructions. The first set of instructions look like this.
 
@@ -1748,7 +1752,7 @@ Once you have clicked the button *Create repository* you will be redirected to a
 
 Each of these commands must be run in a terminal application. Below is an image of the commands each run in my wsl terminal application. 
 
-![commands_in_terminal](.\docs\commands_in_terminal.PNG)
+![commands_in_terminal](./docs/commands_in_terminal.PNG)
 
 ```bash
 echo "# my_new_repo" >> README.md
@@ -1782,6 +1786,24 @@ A new branch is created and named main. This represents the primary version of a
 In the next line, a version of the project is saved on GitHub in our my_new_repo repository and a connection between our local repository and the repository on GitHub is made. The repository on GitHub is called a remote and it is named origin.
 
 Finally, the changes made in our local repository get pushed to the remote repository on GitHub so that those with access to our repository can see our changes. This means that the README.md file can be viewed in our GitHub repository.
+
+
+
+### Commit changes
+
+After we have made some significant changes to a file in our directory, we should commit those changes to our local repository. By committing those changes, we are capturing a snapshot of our project. A snapshot is a saved version of our project that is stored in the git repository. If we don't like the future code we write, we can choose to reset back to this saved version. 
+
+Before we commit, we need to specify which edited files and new files need to be saved into this version. This is done using the git add command and serves to stage our files, ready to be committed.
+
+Let's say we made changes to the README.md file and also created a docs directory.
+
+We should then run the following command
+
+``` 
+git add README.md docs
+```
+
+
 
 
 
