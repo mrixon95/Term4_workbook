@@ -1714,9 +1714,23 @@ http://anh.cs.luc.edu/handsonPythonTutorial/loops.html
 
 
 
-Below I provide an extensive overview of the source control process I follow when coding new projects.
+Below I provide an extensive **overview of the** **source control process** I follow when coding new projects. 
 
-Before I start working on a new project, I created a **new repository** for my project in GitHub. This is done by logging into GitHub and clicking the plus button on the top right hand side of the page.
+Before I begin, the problem that source control addresses should be explained. In a development team, multiple developers are working on the one project. They often want to make frequent changes to the project's code and want to repeatedly update the project with the new code they have written. Soon, many revisions of the code are made and some developers may try to change the same lines of code in a file but in different ways. This will lead to a conflict which must be resolved. Also it is hard to keep track of what the most up-to-date version of the project is since many developers are working on it at the same time. Many changes to the code are made by different developers and it soon can become very complex. Additionally, a developer may want to revert back to a previous version of the project or see what changes another developer made to his code. This can quickly become very disorganised and hard to track.
+
+A source control system is needed. The **system keep tracks of all the changes being made to the project** over the development process. Also, the tasks that each developer does can be separated through them having their own **branches to work on**. The management system allows each developer to isolate their work from other developers by working on their own branch. The **source of truth for the project is kept on the main branch**. Once a developer's new code is ready to be saved to the main branch, they can commit and merge their code onto it.
+
+**Conflicts** can occur when merging code from a developer's own branch on to the main branch. For example, a conflict arises because a file was deleted on the main branch but was edited on a developer's branch and now that developer now wants to merge his/her work onto the main branch. Another conflict example could be that one developer made an edit to a line in a file and merged it on the main branch and now another developer wants to merge a different edit to the same line in the same file. In both cases, there is a conflict that must be resolved. 
+
+
+
+Before I start going through conflict resolution, I will go through creating a new project using a popular source control version called **Git**. The files for a particular project should all be stored in the same location. This is what a **repository** will allow us to do. Git repositories can be stored on **many websites that provide the git version control software**, these include GitLab, Beanstalk, PerForce and others. I will use the popular site called **GitHub**. This is where I will store the repository for my new project so that other developers can access it. The repository will **manage and store all the revisions of the project**. 
+
+
+
+ I first wish to go through how I **set up my repository** for my project.
+
+As mentioned, I use **GitHub** so the code below is specific to setting up a repository in GitHub. I create a new repository for my new project by logging into my GitHub account and clicking the plus button on the top right hand side of the page.
 
 ![create_new_repo](.\docs\create_new_repo.PNG)
 
@@ -1729,6 +1743,31 @@ Once you have clicked the button *Create repository* you will be redirected to a
 
 
 ![create_new_repo_on_command_line](.\docs\create_new_repo_on_command_line.PNG)
+
+
+
+Each of these commands must be run in a terminal application. Below is an image of the commands each run in my wsl terminal application. 
+
+![commands_in_terminal](.\docs\commands_in_terminal.PNG)
+
+```bash
+echo "# my_new_repo" >> README.md
+git init
+git add README.md
+```
+
+**Lines 1-3**
+
+The first 3 commands create a markdown file named README.md, locally initialise a repository using a version control system called Git.
+
+
+
+```bash
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/mrixon95/my_new_repo.git
+git push -u origin main
+```
 
 
 
