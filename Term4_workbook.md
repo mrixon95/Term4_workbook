@@ -1718,7 +1718,7 @@ Below I provide an extensive **overview of the** **source control process** I fo
 
 Before I begin, the problem that source control addresses should be explained. In a development team, multiple developers are working on the one project. They often want to make frequent changes to the project's code and want to repeatedly update the project with the new code they have written. Soon, many revisions of the code are made and some developers may try to change the same lines of code in a file but in different ways. This will lead to a conflict which must be resolved. Also it is hard to keep track of what the most up-to-date version of the project is since many developers are working on it at the same time. Many changes to the code are made by different developers and it soon can become very complex. Additionally, a developer may want to revert back to a previous version of the project or see what changes another developer made to his code. This can quickly become very disorganised and hard to track.
 
-A source control system is needed. The **system keep tracks of all the changes being made to the project** over the development process. Also, the tasks that each developer does can be separated through them having their own **branches to work on**. The management system allows each developer to isolate their work from other developers by working on their own branch. The **source of truth for the project is kept on the main branch**. Once a developer's new code is ready to be saved to the main branch, they can commit and merge their code onto it.
+A source control system is needed. The **system keep tracks of all the changes being made to the project** over the development process. Also, the tasks that each developer does can be separated through them having their own **branches to work on**. The management system allows each developer to isolate their work from other developers by working on their own branch. The **source of truth for the project is kept on the main branch**. Also to be able to effectively collaborate on the project, a remote repository can be hosted on the internet so that all developers can see the project latest updates. Once a developer's new code is ready to be saved to the main branch, they can commit and merge their code onto the main branch and push it to the remote repository. This way, all the other developers can see their latest code.
 
 **Conflicts** can occur when merging code from a developer's own branch on to the main branch. For example, a conflict arises because a file was deleted on the main branch but was edited on a developer's branch and now that developer now wants to merge his/her work onto the main branch. Another conflict example could be that one developer made an edit to a line in a file and merged it on the main branch and now another developer wants to merge a different edit to the same line in the same file. In both cases, there is a conflict that must be resolved. 
 
@@ -1758,7 +1758,11 @@ git add README.md
 
 **Lines 1-3**
 
-The first 3 commands create a markdown file named README.md, locally initialise a repository using a version control system called Git.
+Firstly, the string "# my_new_repo" is appended to a new markdown file named README.md 
+
+A new, empty repository is created using the git init command.
+
+The git repository has been created, so we can now add the file named README.md to the repository's staging area. By running git add on README.md, the repository now tracks the file and prepares it to be committed. 
 
 
 
@@ -1769,5 +1773,29 @@ git remote add origin https://github.com/mrixon95/my_new_repo.git
 git push -u origin main
 ```
 
+**Lines 4-7**
 
+The new file in now saved into the repository by using the commit command. A brief description of this save is also made and is "first commit". The saved changes also get a unique ID so that we can keep track of changes.
+
+A new branch is created and named main. This represents the primary version of a source code repository. Its the source of truth for the project. 
+
+In the next line, a version of the project is saved on GitHub in our my_new_repo repository and a connection between our local repository and the repository on GitHub is made. The repository on GitHub is called a remote and it is named origin.
+
+Finally, the changes made in our local repository get pushed to the remote repository on GitHub so that those with access to our repository can see our changes. This means that the README.md file can be viewed in our GitHub repository.
+
+
+
+
+
+**References**
+
+https://www.howtogeek.com/180167/htg-explains-what-is-github-and-what-do-geeks-use-it-for/
+
+https://www.atlassian.com/git/tutorials/using-branches/git-checkout
+
+https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts
+
+https://www.perforce.com/blog/vcs/what-is-version-control
+
+https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 
