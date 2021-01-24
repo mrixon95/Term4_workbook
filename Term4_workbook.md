@@ -1849,7 +1849,7 @@ If we want to now move into our new-feature-1 branch, we need to checkout the br
 git checkout new-feature-1
 ```
 
-Now whilst we remain in this branch, all our future commits will be in it.
+Now whilst we are in the new-feature-1 branch, all our new commits will be in it.
 
 ```
 echo "Trying out new branch" >> README.md
@@ -1863,7 +1863,7 @@ git commit -m "Wrote about CCC in README.md"
 
 
 
-Now checkout to the main branch. These changes won't be there.
+Now checkout to the main branch and read the contents of the README.md file. The changes just made won't be there.
 
 ```
 git checkout main
@@ -1872,7 +1872,7 @@ cat README.md
 
 
 
-We can merge the changes into master by running the command below
+In order to copy over the changes from the new-feature-1 branch into the main branch We can merge the changes into master by running the command below
 
 ```
 git merge new-feature-1
@@ -1882,17 +1882,114 @@ git merge new-feature-1
 
 Now the README.md in the main branch has all the changes made from the new-feature-1 branch. 
 
+Verify that the README.md file has now been updated by reading it again.
+
+```
+cat README.md
+```
+
+
+
 
 
 ### Merging
 
-When working on a new feature, we may conflict with lines of code in the main branch. Let's checkout into the new-feature-1 branch. Now let's say we changed the second line from "CCC is awesome" to "CCC is really cool" and committed it. In the main branch, let's change the second line from "CCC is awesome" to "CCC is lots of fun" and commit it.  The two branches have now diverged from each other. 
+When working on a new feature, we may conflict with lines of code in the main branch. Let's checkout into the new-feature-1 branch. 
 
-Let's say we want the changes in new-feature-1 branch to be merged into the master branch. Git is going to have to create a new commit to merge together the new-feature-1 branch and the master branch. Let's checkout the master branch and merge in the feature-1 branch.
+```
+git checkout new-feature-1 
+```
 
-A conflict occurs between these two branches so the automatic merge failed. Git does not know whether to keep "CCC is awesome" or "CCC is lots of fun". If we open up the README.md file, we see that Git has modified it to show us the difference between the two branches. The conflict needs to be resolved by us deleting all the unnecessary modifications made by Git and also delete one of the two lines "CCC is awesome" or "CCC is lots of fun".
+Now let's say we changed the second line of *README.md* from "CCC is awesome" to "CCC is really cool" and committed it. 
+
+*README.md* file in new-feature-1
+
+```
+Trying out new branch
+CCC is really cool
+```
+
+Commit the changes
+
+```
+git add README.md
+git commit -m "Changed README.me"
+```
+
+
+
+In the main branch, let's change the second line from "CCC is awesome" to "CCC is lots of fun" and commit it.  
+
+```
+git checkout main
+```
+
+README.md file in main
+
+```Trying out new branch
+Trying out new branch
+CCC is lots of fun
+```
+
+Commit the changes
+
+```
+git add README.md
+git commit -m "Changed README.me"
+```
+
+
+
+The two branches have now diverged from each other. 
+
+Let's say we want the changes in new-feature-1 branch to be merged into the master branch. Git is going to have to create a new commit to merge together the new-feature-1 branch and the master branch. Let's merge in the feature-1 branch.
+
+``` 
+git merge new-feature-1
+```
+
+![conflict](./docs/conflict.PNG)
+
+
+
+A conflict occurs between these two branches so the automatic merge failed. Git does not know whether to keep "CCC is awesome" or "CCC is lots of fun". If we open up the README.md file, we see that Git has modified it to show us the difference between the two branches. 
+
+```
+Trying out new branch
+<<<<<<< HEAD
+CCC is lots of fun
+=======
+CCC is really cool
+>>>>>>> new-feature-1
+```
+
+In the branch we are in is called the HEAD. We have "CCC is lots of fun" in our current branch but the new-feature-1 branch has "CCC is really cool". We have a conflict that must be resolved.
+
+The conflict needs to be resolved by us deleting all the unnecessary modifications made by Git and also delete one of the two lines "CCC is awesome" or "CCC is lots of fun".
+
+Let's change the README.md file to read
+
+```
+Trying out new branch
+CCC is really cool
+```
+
+
 
 Now that we have resolved the conflict. We just add the file to staging and commit as normal.
+
+```
+git add README.md
+git commit -m "Resolved the conflict"
+```
+
+Also let's push our new code to GitHub so others can see our work. Fill in your username and password when prompted.
+
+```
+git push
+```
+
+
 
 
 
