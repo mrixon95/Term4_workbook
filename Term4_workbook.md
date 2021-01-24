@@ -2005,3 +2005,99 @@ https://www.perforce.com/blog/vcs/what-is-version-control
 
 https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 
+
+
+
+
+## Question 2
+
+
+
+Below I list and discuss the characterististics of quality software.
+
+1. **Secure**
+
+Almost all modern software stores sensitive data about users in a database. The private, valuable data that a user can give to software includes their banking details, credit card number and PIN, their password, their home address, biometric information, location data and health records. This data is private and valuable to the individual so having software that is venerable to malicious hackers is very dangerous. The secure software should protect this sensitive user data from disclosure as well as unauthorised alteration or destruction. Security matters because hacked software is damaging to the app's reputation and the owners of the app, or individuals who use it may be held to ransom by malicious attackers. The data may constitute intellectual property of the company and therefore be valuable to steal and sell to a competitor. The organisation may be apart of the government and hold confidential intelligence or military secrets. There are many different kind of data that are sensitive and the motives of the hackers could be competitive, criminal or maybe even terrorist in nature.
+
+It is crucial that developers mitigate the risk of a cyber attack on the software. The software should be as free as possible from vulnerabilities and defects. The software should be attack resistant to the highest extent possible. This means that software should able to continue operating correctly even while attackers try to exploit weaknesses in the software. Any damage from attack-triggered faults should be limited as much as possible so that the effects of the attack are not wide-spread and recovering from it is quick. 
+
+
+
+2. **Scalable**
+
+Software should be able to increase its capacity and functionality as the workloads varies. Workload could refer to number of users, the storage capacity, the number of requests or anything else that pushes a system beyond its initial capacity. A high number of users making requests may slow down the server hosted the application as it may not have enough computing resources to handle it. Another problem could be that maximum storage in the application's database is reached and there is no more room to store new requests. The code itself could also be the problem if the number of operations an algorithm performs grows exponentially as the input size increase. 
+
+The software should maintain effective performance both during and after a significant increase in workload. A company should only be using the resources they need.
+
+**Ways to scale:**
+
+**Vertical scaling** or scaling up refers to increasing the storage size and computing power of a computer. This would include the amount of CPU and the GB. Here's a visual using an AWS EC2 instance. The size and the computing power of an EC2 instance is increased without increasing the number of EC2 instances. 
+
+![vertical_scaling](./docs/vertical_scaling.png)
+
+Image from https://medium.com/@khushalbisht/aws-scaling-horizontally-vs-vertically-3e30e3e71118
+
+
+
+**Horizontal scaling** is whereby the capacity is increased by adding on more computers to the system. In this case, we would be adding more EC2 instances to the existing pool. A load balancer can be used to route the traffic relatively evenly between the multiple instances.
+
+
+
+![horizontal_scaling](./docs/horizontal_scaling.png)
+
+
+
+Image from https://medium.com/@khushalbisht/aws-scaling-horizontally-vs-vertically-3e30e3e71118
+
+
+
+
+
+It is important that when the user demand decreases again, the **system scales down** since it costs more money to run more instances or instances with higher processing power and storage. This scaling can be done automatically in AWS using the **AWS Auto Scaling feature**. It allows user to write scaling policies over multiple instances so that the process of scaling up and down is done automatically according to those policies. For example, we could target the Application Load Balancer Request Count Per Target so that it is programmed to always keep the value around 200. Instances would automatically be added and removed so that this value remains approximately the same. This is horizontal scaling.
+
+**Horizontally scaling is generally easier than vertical scaling**. Adding more machines to an existing pool is relatively easy. However adding more capacity to an instance  does have some issues. 
+
+Firstly, there must be some downtime for upgrading the ec2 instance size
+
+Secondly, the upgraded machine is the single point of failure. There is no redundancy incase it fails.
+
+
+
+
+
+**References**
+
+https://www.softwaresuggest.com/blog/five-characteristics-make-excellent-software/
+
+https://www.perforce.com/blog/sca/what-code-quality-and-how-improve-code-quality
+
+https://rvtechnologies.com/8-must-characteristics-for-software-code/
+
+https://www.geeksforgeeks.org/software-engineering-characteristics-of-good-software/
+
+https://www.guru99.com/what-is-software-engineering.html
+
+https://medium.com/@khushalbisht/aws-scaling-horizontally-vs-vertically-3e30e3e71118
+
+
+
+3. **Maintainable**
+
+Software should have an **automated test suite** so that bugs will be easy to locate and won't get pushed to production code. This is crucial since many developers could be working on the same file and new bugs can arise. Also **proper documentation** is important to maintaining code and the code should be **refactored with readability** in mind. Often when code is written the first time, it is messy. It often has either unclear variable names, repeated code, lack of spacing or other stylistic inconsistencies that reduce readability. Difficult to read code makes it very difficult for other developers to update and maintain the code.
+
+For ensuring **readability**, make sure to **use a coding standard** for naming conventions and formatting. PEP8 provides the coding conventions for the Python language. The Flake8 package can be used to ensure that code is altered to remove stylistic inconsistencies and to conform to the PEP8 standard. Comments can be used to describe the intent and logic of code so that the reader does not need to think to hard about it themselves. This will help other developers maintain the code since it will be easier understand what the software does and therefore easier to find what needs to be updated and changed. 
+
+Additionally, **version control software** is important for maintaining code. It ensures that the code, tests and documentation are up to date and **do not conflict** with each other. The logs and commit descriptions makes it **easier to understand what changes have been most recently made** to the code and what the intent of those changes were.
+
+Another characteristic of maintainable software is **modularity**. This is where code is separated out into independent modules in which the internal details are hidden behind a public interface. The inner workings of a module that are not relevant to the user of the module should be hidden. The modules should be decoupled as much as possible so that the functionalities of each module are independent from each other. they do not depend on each other. This decoupling ensures that changes in one module do not cause unintended bugs in another and therefore makes code easier to maintain.
+
+**References**
+
+https://www.sitepoint.com/10-tips-for-better-coding/
+
+https://www.software.ac.uk/resources/guides/developing-maintainable-software
+
+http://singlepageappbook.com/maintainability1.html
+
+
+
