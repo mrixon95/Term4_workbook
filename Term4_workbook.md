@@ -2101,3 +2101,68 @@ http://singlepageappbook.com/maintainability1.html
 
 
 
+4. **Usability**
+
+This is an attribute of software that assesses how easy it is to use. It is important that the end user of the software is able to easily interact with it. If the software interface is difficult to get used too, buggy, not aesthetically pleasing to look at or makes it hard to complete basic tasks then this reduces the quality of the software. 
+
+Usability is necessary for creating good software because if an application is difficult to use then most people will stop using it. If it hard to locate important information on a website then users will just go elsewhere. Few users will bother to read an application's manual or contact support since there are many other applications available to them to use. Also it the layout and graphics of an app look disorganised and unpleasant than this can affect a user's experience with the software. 
+
+In order to identify usability problems in software, having 5 users test it out is usually enough. Additionally, frequently redesigning user interfaces based off user testing can significantly improve usability design. This iterative process means that bad features of an application are identified early in the process and can be easily fixed. This is much more preferable than finding out a feature has problems moments before release, especially if other features depend on it.
+
+Overall, usable software should contain these 5 elements:
+
+1. Effectiveness - It supports users ability to complete tasks that they want to complete.
+
+2. Efficiency - The tasks can be performed relatively quickly through the easiest process possible.
+3. Engagement - The graphics and features and pleasing to look at and keeps the user interested.
+4. Error tolerance - Many different user actions should be anticipated, including when they make wrong actions and enter invalid data. The software should alert them to what error they have made or recover quickly from that error. Bad user input should not cause the software code to break.
+5. Easy to learn - Most software should not require reading a user manual before using. Instead, the design should be intuitive and logical to use. They shouldn't have to dedicate much time to learn how to use the app.
+
+
+
+**References**
+
+https://www.nngroup.com/articles/iterative-design/
+
+https://www.nngroup.com/articles/usability-101-introduction-to-usability/#:~:text=Usability%20is%20a%20quality%20attribute,use%20during%20the%20design%20process
+
+https://www.interaction-design.org/literature/topics/usability
+
+
+
+5. **Reliability**
+
+This refers to the probability of the software running without failures for a specific time. Software is considered reliable if we get the same result every time and we can depend on it doing so. For modern software products, causes of failure can be categorised as unplanned events, planned events and configuration failures. For instance, **unplanned events** can include the system crashing, a response taking too much time to complete or a freeze where the computer becomes unresponsive and no longer takes any input. All of these events reduce the reliability of the software. However there are also **planned events** that affect reliability. New software updates can require a system restart, meaning that the system must go down in order to perform updates. Also new configuration changes can require shutting down the system. If these planned events happen often then the software is very unreliable. Finally, **configuration failures** can occur which include human error. 
+
+Many tests can be performed to assess the reliability of software. Let's go through some examples. **Failure/Recovery tests** are where failures are deliberately simulated in the software. The test assess the ability of the software to detect the condition and then reconfigure the system to remain operation. Another test is the reliability life test. This is where **time to failure** of non-repairable systems and the **time between failures** needed to repair and restore the systems are tested. One another is the accelerated life test. This is where the electronic parts that run the software are subject to high temperature to see whether this affects how well the software operates.
+
+
+
+**References**
+
+https://www.sebokwiki.org/wiki/Reliability,_Availability,_and_Maintainability
+
+https://www.ques10.com/p/21811/explain-software-reliability/
+
+https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr-2004-145.pdf
+
+
+
+6. **Performance**
+
+Users of web and mobile apps demand high performance and can be quickly frustrated when software lags. It contributes to how satisfied a user is with the software and if the performance is slow then users may just quit using the software. Performance is therefore crucial and testing can be done to measure how well the software performs under varied load.
+
+**Load testing** is used to measure the performance of the software as the **workload increases**. This workload could be an increase in users making concurrent transactions. More computing power, memory and storage will likely be needed as a result of the increase in requests to the software. The software is monitored to measure its response time as the workload increases.
+
+Another test for performance is **stress testing**. This is where the software is deliberately given **more users or transactions than it can handle**. Here the stability of the software is tested and the **point at which the software fails is recorded**.
+
+ One other test is **scalability testing**. With cloud computing services, applications can scale vertically and horizontally as more or less workload needs to be handled. By scaling up and down, the amount of **resources such as CPUs and memory are changed** whilst the system is still running. The effectiveness of this scaling can be tested. Specifically we can access how well the system performs in responding to user requests whilst the scaling is going on.
+
+
+
+**References**
+
+https://www.softwaretestinghelp.com/reliability-testing/
+
+https://www.sebokwiki.org/wiki/Reliability,_Availability,_and_Maintainability
+
