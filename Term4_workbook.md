@@ -2358,13 +2358,37 @@ The **seventh** skill was **Project Management**. As opposed to the previous pie
 
 
 
+The **challenges** I encountered included how do I implement a many-to-many relationship in *Flask* and how do I join together two tables in a query. Despite looking up answers on *stack overflow* and looking through tutorials online, I still had problems overcoming these challenges. Therefore, I decided to ask my CCC instructors for their thoughts on how I may do it. 
+
+For the most part, I was able to **overcome challenges in the project through doing my own research**. I used many resources online, these included looking up Flask tutorials, finding similar questions that had been answered in *stack overflow*, watching video tutorials on *YouTube*, reading through the official flask documentation and finally reviewing lesson notes from the CCC course within *ed*. 
+
+
+
 
 
 ## Question 6
 
 
 
-A recent project that I worked on was my **Flask app API**.
+Overall, I believe that **my knowledge and skills were reasonably effective** in the Flask app project, however there **were areas of improvement**.
+
+In my Flask app, I was successfully able to use the **ORM** to implement requests to my database in all of my requests. I had over 50 possible, different requests that could be made. The image below shows just a few, the full list is at 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+They provided a range of functionality. For example, here is the Entity Relationship diagram that my flask app was able to implement.
 
 The **first** skill I needed was knowing how to **set up a minimal Flask application** to get me started. A minimal flask app has an instance of a Flask class in a file and at least one route
 
