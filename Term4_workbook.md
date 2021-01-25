@@ -2166,3 +2166,59 @@ https://www.softwaretestinghelp.com/reliability-testing/
 
 https://www.sebokwiki.org/wiki/Reliability,_Availability,_and_Maintainability
 
+
+
+
+
+## Question 4
+
+
+
+For a team of developers to create a quality website, they need strong web development skills. 
+
+Firstly, they need the technical knowledge to code in HTML and CSS. **HTML** allows developers to structure paragraphs, headings, links, images, videos and other elements within a webpage. HTML uses tags that structures the content into headers, paragraphs and other sections. Every HTML document has three block level tags, a <HTML></HTML> tag to enclose every HTML page, a <head></head> tag to hold meta information about the page, and a <body></body> tag to enclose all the content that appears on the page. A developer with good knowledge of HTML will need to be able to structure the webpage with an appropriate hierarchy of HTML tags.
+
+
+
+**CSS** is needed as another technical skill that the developers need. Its required because it is used to describe the formatting and layout of the HTML tags on the screen. Moreover, CSS describes the styles used on the webpage such as colors and fonts used in the navigation bar, forms, tables, buttons and many more graphics. The developers can decorate their website to make it aesthetically pleasing through using CSS. All the css styling is normally saved in its own .css file. The link to the style sheet is specified in the HTML page within the <head></head> tag so that the HTML page knows what styling will be used on its tags.
+
+
+
+If we want to make the site interactive, the developers need to know **JavaScript** as well. JavaScript is now used by about 92% of websites and can be added directly to the HTML or stored in .js files. JavaScript can be used to provide animated graphics and multimedia. As well, through using the DOM (Document Object Model) API, you can manipulate the HTML and CSS so that new styles, layouts and pop up windows can appear on the webpage as the user interacts with the website. JavaScript can also be used for interacting with other APIs such as the Geolocation API for geographical information eg. Google Maps, or Audio and Video APIs like HTMLMedia Element so that you can play audio and video in a webpage.
+
+
+
+The website will presumably be getting data from the customer such as their name, address and credit card details for the business orders. There would probably be a lot of customer data that the small business would want to capture. Also the content of the small business may change every so often so having a database can ease administration. For example, the small business may changes its products every season and needs to store the images, descriptions, prices, stock number, customer reviews and other information about the product. Therefore, the website will need server-side software that pulls information from a data which stores that information. Hence, the developers need to have that **server-side software knowledge** for retrieving and updating data from a database. Also **knowledge about database administration** eg. CRUD operations, deposing tables and creating relationships between tables would also be crucial.
+
+
+
+Next, the small business would want its website to be made available to the public. There needs to be a name that internet users can use to find the website. Therefore, the developers need to know how to **secure a domain name** for the website. The domain name will represent the IP address of the computer where the website will be stored. In order to buy a domain name, a developer must know how to purchase a domain name from a domain name registrar such as Domain.com, GoDaddy or HostGator. Without domain names, customers would have to remember and enter a long string of numbers called an IP address in order to visit the website. This would be inconvenient and difficult to remember. Therefore associating a memorable domain name for the IP address is important. The name must not already be registered by someone else and must have a valid suffix. The name should probably be the same as the small business' name or very similar incase there already exists a website with their business' name. The suffix is usually .com. It usually takes no more than 48 hours for the new name to be set up and running on the web.
+
+Also it is important that the developers either know the domain name's expiration date or set up an automatic renewal feature with the domain registrar. If they forget to renew the domain then it will expire and someone else may register it.
+
+
+
+Next, the developer need to know how to **host the website**. Hosting a website means that the website files such as the HTML and CSS files are put on a special computer called a server. The server allows the website files to be publicly available for anyone on the internet to access. It has software installed called a web server which allows the special computer to receive incoming requests and respond to them. Usually the response contains the requested web page that the user was after. 
+
+All websites use third-party services providers to host their websites. These third party service provides include Amazon, Google, Microsoft and others. They offer ready-to-use web servers for hosting the website. The developers should know that there are different kinds of hosting offerings depending on the specific website needs. For a small business, a shared hosting website is suitable. It costs around $2.75 to $8 a month and keeps the cost low by allowing multiple other websites to share the same server resources. If the small business has a busy time of year where they receive many more sales then they can consider upgrading to VPS hosting. It offers a flexible set of resources that can handle large spikes in traffic.
+
+
+
+
+
+**References**
+
+https://www.w3schools.com/css/css_intro.asp
+
+https://au.pcmag.com/web-hosting/45573/how-to-register-a-domain-name-for-your-website
+
+https://www.wpbeginner.com/beginners-guide/how-to-host-a-website/
+
+https://www.wpbeginner.com/wp-tutorials/how-to-make-a-small-business-website-step-by-step/
+
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript
+
+https://www.approvedindex.co.uk/database-developers/databases-for-websites#:~:text=If%20your%20site%20content%20changes,a%20database%20can%20ease%20administration.&text=In%20this%20case%2C%20a%20database,with%20content%20from%20the%20database.
+
+
+
