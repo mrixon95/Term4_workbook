@@ -2188,7 +2188,7 @@ If we want to make the site interactive, the developers need to know **JavaScrip
 
 
 
-The website will presumably be getting data from the customer such as their name, address and credit card details for the business orders. There would probably be a lot of customer data that the small business would want to capture. Also the content of the small business may change every so often so having a database can ease administration. For example, the small business may changes its products every season and needs to store the images, descriptions, prices, stock number, customer reviews and other information about the product. Therefore, the website will need server-side software that pulls information from a data which stores that information. Hence, the developers need to have that **server-side software knowledge** for retrieving and updating data from a database. Also **knowledge about database administration** eg. CRUD operations, deposing tables and creating relationships between tables would also be crucial.
+The website will presumably be getting data from their customers visiting their website such as their name, address and credit card details for the business orders. There would probably be a lot of customer data that the small business would want to capture. Also the content of the small business may change every so often so having a database can ease administration. For example, the small business may changes its products every season and needs to store the images, descriptions, prices, stock number, customer reviews and other information about the product. Therefore, the website will need server-side software that pulls information from a data which stores that information. Hence, the developers need to have that **server-side software knowledge** for retrieving and updating data from a database. Also **knowledge about database administration** eg. CRUD operations, deposing tables and creating relationships between tables would also be crucial.
 
 
 
@@ -2219,6 +2219,156 @@ https://www.wpbeginner.com/wp-tutorials/how-to-make-a-small-business-website-ste
 https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript
 
 https://www.approvedindex.co.uk/database-developers/databases-for-websites#:~:text=If%20your%20site%20content%20changes,a%20database%20can%20ease%20administration.&text=In%20this%20case%2C%20a%20database,with%20content%20from%20the%20database.
+
+
+
+
+
+## Question 5
+
+
+
+A recent project that I worked on was my **Flask app API**.
+
+The **first** skill I needed was knowing how to **set up a minimal Flask application** to get me started. A minimal flask app has an instance of a Flask class in a file and at least one route.
+
+For example
+
+```python
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+```
+
+I also needed to have Flask installed on my local machine so I ran 
+
+```python
+pip3 install flask
+```
+
+ Furthermore, to run the flask application, I needed to first let the terminal know which application to work with by exporting the FLASK_APP environment variable and assigned it the name of my file.
+
+```
+$ export FLASK_APP=main.py
+$ flask run
+ * Running on http://127.0.0.1:5000/
+```
+
+
+
+**Secondly**, I needed to know how to **write HTML templates with jinja2 placeholders** and **understand how the jinja2 syntax works**. Jinja2 placeholders can be replaced with actual values when a HTML template is rendered. It means that python objects can be passed in as arguments when the template is rendered so that the contents of the python object are displayed in the HTML file.
+
+HTML files need to be saved in a directory called templates for the problem to work.
+
+Here's an example
+
+In *app/templates/index.html* we have this file below
+
+```html
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Blog Page</title>
+        {% else %}
+        <title>Welcome to your Blog Page</title>
+        {% endif %}
+    </head>
+    <body>
+        <h1>Hi, {{ user.username }}! Here are your blog posts</h1>
+        {% for post in posts %}
+        <div><p>On the {{post.date}}, you wrote about {{post.subject }}.
+        Here is what you said: <b>{{ post.contents }}</b></p></div>
+        {% endfor %}
+    </body>
+</html>
+```
+
+
+
+We can then export our routes to a new page and called it *routes.py*. It would look like this.
+
+```python
+from flask import render_template
+from main import app
+
+@app.route('/')
+@app.route('/index')
+def index():
+    user = {'username': 'Michael'}
+    posts = [
+        {
+            'date': '01/11/2020',
+            'subject': 'Day at beach',
+            'contents': 'I had a very nice, sunny day at St.Kila beach!'
+        },
+        {
+            'date': '24/11/2020',
+            'subject': 'Date at the cinema',
+            'contents': 'We watched the latest Avengers movie. It was awesome!'
+        }
+    ]
+    return render_template('index.html', title='Home', user=user, posts=posts)
+```
+
+
+
+The *main.py* file would just look like this.
+
+```python
+from flask import Flask
+app = Flask(__name__)
+```
+
+
+
+The **third** piece of knowledge was understanding what an **Object Relational Mapper** is and how it could be used to interact with a database using Python objects, classes and methods. An ORM is used for converting data between incompatible data types. In this case, we have Python data types such as int, float, string and boolean. These data types need to somehow be translated into storing data as fields in the database tables. The ORM will make the most appropriate data type conversion between Python and the database.
+
+The most popular Python ORM is SQLAlchemy and that is what I learned to use in my Flask App.
+
+
+
+The **fourth** important area of knowledge was knowing what **Database Migrations** are and how I could use them effectively in my Flask app. **Basically, they save all revisions of the database table definitions and provide methods for upgrading or downgrading a database to a new or back to an older revision.** This is crucial to be able to understand and implement since changes to a database are risky in that there may be a loss of valuable data if a mistake is made. Database migrations automatically figure out which commands need to be ran in order to update the schema of the database without losing any of the valuable data.
+
+For example, say we have already written a database full of tables and important custom data has since been inserted into the tables by customers. We now want the database to capture credit card information. This would involve a new table in the database for the credit card details as well as a new relationship between the credit card details table and the user table. Instead of being risky and trying to manually redefine the tables in the database, it would be much safer to create a new database migration file and run it. The flask-migration package will automatically generate the code needed to adjust the tables so that the new table and relationship are added whilst no customer data is lost. Also, if we wish to undo the changes, the flask migration package has automatically written the code needed to do that. All we would need to do is run the downgrade function.
+
+
+
+The **fifth** important skill was learning how to **deploying the Flask app to the cloud**, along with the database with which it interacts. For my app, I spun up two EC2 instances: one for the Flask application itself and another for the database. The reason that there is one for the Flask app and another for the database is that we can allow all in bound traffic to the flask app but only allow requests directly from the flask app to interact with the database. This is a security measure to ensure that anyone who wishes to interact with the database must do so through making requests to the flask app. The flask app has its own data validation for each endpoints and also restricts what requests can be sent to the database. Therefore, we are providing a layer of security so that users can't interact with our database without having their request and its contents validated. 
+
+
+
+The **sixth** piece of knowledge required was knowing how to perform **load testing**. Each request to the API takes up some amount of CPU and RAM so as the number of users and requests increase, the required resources of the EC2 instances will increase. At some point, the performance will deteriorate as the workload becomes too much for the EC2 instances to handle.. In order to test what happens when we have thousands of users interacting with our Flask app, we can perform a load test. 
+
+The python installation package has a useful module for load testing called **Locust**. We can use it to write user test scenarios using the Python language and see how our Flask app performs through a web interface. Below we can see how the response times change over time and begin to dramatically increase as thousands of more users interact with the Flask app.
+
+
+
+![Locust](./docs/Locust.png)
+
+
+
+The **seventh** skill was **Project Management**. As opposed to the previous piece of knowledge and skill mentioned, this one was more of a soft skill. Throughout the duration of the project, I thought it was important to track the tasks that I had not yet started, the tasks in progress and finally the tasks that were completed. Additionally, at times, I got stuck and was unsure how to solve a particular problem. Therefore, I wrote down multiple questions that I wanted to ask one of the CCC instructors. Finally, I had a list of all the questions that I did get an answer too. Here is a screenshot of my project management board in Trello.
+
+
+
+![trello_board](./docs/trello_board.PNG)
+
+
+
+
+
+## Question 6
+
+
+
+A recent project that I worked on was my **Flask app API**.
+
+The **first** skill I needed was knowing how to **set up a minimal Flask application** to get me started. A minimal flask app has an instance of a Flask class in a file and at least one route
+
+
 
 
 
