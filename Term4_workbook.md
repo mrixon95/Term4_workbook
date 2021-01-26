@@ -2372,27 +2372,82 @@ For the most part, I was able to **overcome challenges in the project through do
 
 Overall, I believe that **my knowledge and skills were reasonably effective** in the Flask app project, however there **were areas of improvement**.
 
-In my Flask app, I was successfully able to use the **ORM** to implement requests to my database in all of my requests. I had over 50 possible, different requests that could be made. The image below shows just a few, the full list is at 
+
+
+### Validation
+
+In my Flask app, I was successfully able to perform **validation** on each of the values in the request's json before creating a new model object. I was able to create classes for each of the tables in my database and was able to perform checks to validate my data before inserting new records into the database. Below is an example of me trying to validating each of the values before creating a new message object, giving values to each attribute and saving it to the database. In the example below, I was able to check that both the sender and receiver of the message **did exist** and also that there was **non-empty content**. In line 48, I check that there is indeed a valid sender and receiver of the message. Furthermore in line 51, I check that the content of the message is non-empty.
 
 
 
+![validation1](./docs/validation1.PNG)
 
 
 
+In order to **improve my validation** in a future Flask app, I believe that I should have used **more Marshmallow validation**. The validation that I implemented in my Flask app was **repetitive**. It was repetitive because I checked the validity of the sender and receiver in multiple different functions. I could have been done more effectively by using the **schema to check that the usernames were valid.**
+
+It would have been neater and less repetitive to have done validation through just using the schema. As can be seen below, the Message schema **did not** have its own validation for checking the existence of the sender and receiver.
 
 
 
+![message_schema](./docs/message_schema.PNG)
 
 
 
+Instead, a validation check could have been implemented for both the sender and receiver to ensure that they exist. The below error handler could then have been used return to the user the error messages that explain why the input was invalid.
+
+```python
+@app.errorhandler(ValidationError)
+def handle_bad_request(error):
+    return (jsonify(error.messages), 400)
+```
 
 
 
-They provided a range of functionality. For example, here is the Entity Relationship diagram that my flask app was able to implement.
+### Authentication and Authorisation
 
-The **first** skill I needed was knowing how to **set up a minimal Flask application** to get me started. A minimal flask app has an instance of a Flask class in a file and at least one route
+I believe that my knowledge of **authenticating users** **and authorising them to do certain actions** **was reasonably effective**. I was able to write endpoints that required the user to provide their **jwt token** in the header of the request. My Flask App would **authenticate** who they were before **authorising** them to change personal content to a user such as their work history or messages with other users. Here is an example below of the user being authenticated. Once they are checked to be a valid user, they are able to create a work history object using the body of their request.
+
+![work_history](./docs/work_history.PNG)
 
 
 
+However, I believe that my Flask app was **incomplete in regards to authentication and authorisation** because there was **no admin login available**.  
+
+For example, in my message controller I initially had an endpoint to retrieve all messages. However, many of those messages would be personal and therefore I believe that it should only be accessible by an admin account. I ended up not having enough time left to add in this feature. Here is an example below where I commented out a route endpoint because it would have allowed anyone to retrieve all the personal messages that users had sent. I considered this to be a security risk, hence why it is commented out.
+
+![get_all_messages](./docs/get_all_messages.PNG)
 
 
+
+If I do another Flask app project in the future, I would create admin accounts along with normal user accounts. These **admin accounts would have full access** to all the data in the database and would be able to **retrieve all the messages**. Also, I would give admin accounts the ability to **download all of the data** from the database and have the **data neatly saved into csv files** where each csv file contains data from a different table from the database.
+
+
+
+### Project Management
+
+Although I did do some project management whilst progressing during my Flask app, I think that there was **a lot of room for improvement**.
+
+As part of managing my tasks for the Flask App, I created a trello board. Here is a snapshot of it.
+
+
+
+![trello_board](./docs/trello_board.PNG)
+
+
+
+I had a list for each of the follow: tasks to do, work in progress, completed tasks, questions to ask the CCC and the ones that had been answered. I found it useful as I could track how much progress I had made on each tasks within the project. Also I could see which questions I had not yet had answered.
+
+
+
+Looking back, I think that my trello board was **insufficient** since my final project missed some marks on one section of the rubric. Specifically, I lost 3 marks because I failed to implement a script to **export all the data from the database**. I believe that it was completely my fault for **not reading this rubric section properly**. I only had a few endpoints that returned some data. They only returned data from one table each and would be in a JSON object. This was **very much insufficient in addressing what the rubric asked for**.
+
+In order to **satisfy all the requirements in future projects**, I believe that I should have a **checklist** which lists down each of the rubric requirements along with the allocated marks. I think that each rubric section in the checklist should be also written in my own words and very specific.
+
+For example, what was written was ```Implements a script to export all data from the database```.
+
+Instead, I could write it in my own words in my checklist. Specifically, I could re-worded as the following: ```has a Flask app endpoint which when requested will write the contents of each database table to a different csv file on the local computer```.  When written in my own words, I think it will be easier for me to tell whether I have really satisfied the rubric requirement. 
+
+Also, I should verify that each of my specific, re-worded rubric descriptions do indeed fulfill the rubric requirement. Therefore, I should chat with whomever will mark my assignment and **verify that I have properly understood each of the requirements**. This way, there is little chance of me poorly misreading a rubric section again.
+
+Finally, once the project is finished, I should re-read my work and objectively mark myself against my checklist. Only once I am fully satisfied that I have responded in the way that the marker expects me too, should I be comfortable submitting my work. Ideally, this strategy will eliminate marks lost because of not addressing a rubric. 
