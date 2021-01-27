@@ -2039,7 +2039,7 @@ Image from https://medium.com/@khushalbisht/aws-scaling-horizontally-vs-vertical
 
 
 
-**Horizontal scaling** is whereby the capacity is increased by adding on more computers to the system. In this case, we would be adding more EC2 instances to the existing pool. A load balancer can be used to route the traffic relatively evenly between the multiple instances.
+**Horizontal scaling** is whereby the capacity is increased by adding on more computers to the system. In this case, we would be adding more EC2 instances to the existing pool. A load balancer can be used to route the traffic relatively evenly between the multiple instances. Here is a visual below where the number of EC2 instances has been increased from one to three.
 
 
 
@@ -2170,11 +2170,87 @@ https://www.sebokwiki.org/wiki/Reliability,_Availability,_and_Maintainability
 
 
 
+## Question 3
+
+
+
+At a **high level**, my Flask app follows the **MVC pattern**. It is made up of multiple routes, controllers, models and view. The visual below gives a **high level** representation of the layout of this design pattern. 
+
+
+
+![mvc_diagram](./docs/mvc_diagram.png)
+
+
+
+Image is from https://realpython.com/the-model-view-controller-mvc-paradigm-summarized-with-legos/
+
+
+
+Firstly, a user must **make a request** in their browser to the IP address and an endpoints of the Flask app. For example, In order to do so, the **URL of their request** must match one of the routes available. There are many different routes and controllers. Similar routes are grouped together in the same controller. For example, routes that create, read, update or delete work histories are all located in the *Work history* controller.  
+
+Below, I have snippets of code. Each is an example of a different route available in the *work history* controller. This controller allows for **manipulating work histories in my database**. Here, each of the routes allow for **creating, reading, updating and deleting records** in the database that related to work histories.
+
+
+
+![workhistory_create](./docs/workhistory_create.PNG)
+
+
+
+![workhistory_read](./docs/workhistory_read.PNG)
+
+
+
+![workhistory_update](./docs/workhistory_update.PNG)
+
+
+
+
+
+![workhistory_delete](./docs/workhistory_delete.PNG)
+
+
+
+**From the controller**, we can use **models to retrieve data from the database**. We do not want the controllers to directly access the database. Therefore, the models are needed to abstract the connection between the controllers and the database. This way, **we never directly interact with the database** and can perform validation checks on the data using the model.
+
+When queries are performed on the database, the database sends back data to the controller. The controller then passes that data through to a view which renders the data on the request page.
+
+For example, here I am in my *Account Info* page.
+
+![Account_Info](./docs/Account_Info.PNG)
+
+
+
+When I click the *Work Experience* tab in the navigation bar, a request is sent to the *work history* controller. The work history controller has a *view_workhistory* function which interacts with the *work history* model. It retrieves all the work history data from the database which was made by this user. The *view_workhistory* function within the work history controller passes the data through to a view. The view is named *view_workhistory.html* and it renders the work history page with the user's work history data. The view is a HTML page and the data is dynamically inserted into it using the *jinja2* package.
+
+Here is the controller's *view_workhistory* function that interacted with the model and then the view.
+
+ ![view_work_history_function](./docs/view_work_history_function.PNG)
+
+
+
+Here is the view where the work history data is displayed.
+
+
+
+![view_work_history_page](./docs/view_work_history_page.PNG)
+
+One other **high level** aspect of the app is the **cloud architecture** which stores the data. As can be seen below, the EC2 instances which contain the flask application and its database were both located in the same public subnet.
+
+![vpc-1](./docs/vpc-1.png)
+
+The internet gateway allows **incoming traffic** from IP addresses outside the EC2 instances. It also allows **outgoing traffic** from the EC2 instances. This is useful for my Flask app because I can then make updates to my PostgreSQL database by sending a request from my EC2 instance, to the internet.
+
+
+
+
+
 ## Question 4
 
-
-
 For a team of developers to create a quality website, they need strong web development skills. 
+
+
+
+### HTML and CSS
 
 Firstly, they need the technical knowledge to code in HTML and CSS. **HTML** allows developers to structure paragraphs, headings, links, images, videos and other elements within a webpage. HTML uses tags that structures the content into headers, paragraphs and other sections. Every HTML document has three block level tags, a <HTML></HTML> tag to enclose every HTML page, a <head></head> tag to hold meta information about the page, and a <body></body> tag to enclose all the content that appears on the page. A developer with good knowledge of HTML will need to be able to structure the webpage with an appropriate hierarchy of HTML tags.
 
@@ -2184,19 +2260,27 @@ Firstly, they need the technical knowledge to code in HTML and CSS. **HTML** all
 
 
 
+### **JavaScript** 
+
 If we want to make the site interactive, the developers need to know **JavaScript** as well. JavaScript is now used by about 92% of websites and can be added directly to the HTML or stored in .js files. JavaScript can be used to provide animated graphics and multimedia. As well, through using the DOM (Document Object Model) API, you can manipulate the HTML and CSS so that new styles, layouts and pop up windows can appear on the webpage as the user interacts with the website. JavaScript can also be used for interacting with other APIs such as the Geolocation API for geographical information eg. Google Maps, or Audio and Video APIs like HTMLMedia Element so that you can play audio and video in a webpage.
 
 
 
+### Interacting with a Database
+
 The website will presumably be getting data from their customers visiting their website such as their name, address and credit card details for the business orders. There would probably be a lot of customer data that the small business would want to capture. Also the content of the small business may change every so often so having a database can ease administration. For example, the small business may changes its products every season and needs to store the images, descriptions, prices, stock number, customer reviews and other information about the product. Therefore, the website will need server-side software that pulls information from a data which stores that information. Hence, the developers need to have that **server-side software knowledge** for retrieving and updating data from a database. Also **knowledge about database administration** eg. CRUD operations, deposing tables and creating relationships between tables would also be crucial.
 
 
+
+### Domain name
 
 Next, the small business would want its website to be made available to the public. There needs to be a name that internet users can use to find the website. Therefore, the developers need to know how to **secure a domain name** for the website. The domain name will represent the IP address of the computer where the website will be stored. In order to buy a domain name, a developer must know how to purchase a domain name from a domain name registrar such as Domain.com, GoDaddy or HostGator. Without domain names, customers would have to remember and enter a long string of numbers called an IP address in order to visit the website. This would be inconvenient and difficult to remember. Therefore associating a memorable domain name for the IP address is important. The name must not already be registered by someone else and must have a valid suffix. The name should probably be the same as the small business' name or very similar incase there already exists a website with their business' name. The suffix is usually .com. It usually takes no more than 48 hours for the new name to be set up and running on the web.
 
 Also it is important that the developers either know the domain name's expiration date or set up an automatic renewal feature with the domain registrar. If they forget to renew the domain then it will expire and someone else may register it.
 
 
+
+### Hosting
 
 Next, the developer need to know how to **host the website**. Hosting a website means that the website files such as the HTML and CSS files are put on a special computer called a server. The server allows the website files to be publicly available for anyone on the internet to access. It has software installed called a web server which allows the special computer to receive incoming requests and respond to them. Usually the response contains the requested web page that the user was after. 
 
@@ -2384,7 +2468,7 @@ In my Flask app, I was successfully able to perform **validation** on each of th
 
 
 
-In order to **improve my validation** in a future Flask app, I believe that I should have used **more Marshmallow validation**. The validation that I implemented in my Flask app was **repetitive**. It was repetitive because I checked the validity of the sender and receiver in multiple different functions. I could have been done more effectively by using the **schema to check that the usernames were valid.**
+In order to **improve my validation** in a future Flask app, I believe that I should have used **more Marshmallow validation**. The validation that I implemented in my Flask app functions was **repetitive**. It was repetitive because I checked the validity of the sender and receiver in multiple different functions. I could have been done more effectively by using the **schema to check that the usernames were valid.**
 
 It would have been neater and less repetitive to have done validation through just using the schema. As can be seen below, the Message schema **did not** have its own validation for checking the existence of the sender and receiver.
 
@@ -2414,13 +2498,13 @@ I believe that my knowledge of **authenticating users** **and authorising them t
 
 However, I believe that my Flask app was **incomplete in regards to authentication and authorisation** because there was **no admin login available**.  
 
-For example, in my message controller I initially had an endpoint to retrieve all messages. However, many of those messages would be personal and therefore I believe that it should only be accessible by an admin account. I ended up not having enough time left to add in this feature. Here is an example below where I commented out a route endpoint because it would have allowed anyone to retrieve all the personal messages that users had sent. I considered this to be a security risk, hence why it is commented out.
+For example, in my message controller I initially had an endpoint to retrieve all messages. However, many of those messages would be **personal** and therefore I believe that it **should only be accessible by an admin account**. I ended up not having enough time left to add in this feature. Here is an example below where I commented out a route endpoint because it would have allowed anyone to retrieve all the personal messages that users had sent. I considered this to be a security risk, hence why it is commented out.
 
 ![get_all_messages](./docs/get_all_messages.PNG)
 
 
 
-If I do another Flask app project in the future, I would create admin accounts along with normal user accounts. These **admin accounts would have full access** to all the data in the database and would be able to **retrieve all the messages**. Also, I would give admin accounts the ability to **download all of the data** from the database and have the **data neatly saved into csv files** where each csv file contains data from a different table from the database.
+If I do another Flask app project in the future, I would **create admin accounts along with normal user accounts**. These **admin accounts would have full access** to all the data in the database and would be able to **retrieve all the messages**. Also, I would give admin accounts the ability to **download all of the data** from the database and have the **data neatly saved into csv files** where each csv file contains data from a different table from the database.
 
 
 
@@ -2428,7 +2512,7 @@ If I do another Flask app project in the future, I would create admin accounts a
 
 Although I did do some project management whilst progressing during my Flask app, I think that there was **a lot of room for improvement**.
 
-As part of managing my tasks for the Flask App, I created a trello board. Here is a snapshot of it.
+As part of managing my tasks for the Flask App, I created a **trello board**. Here is a snapshot of it.
 
 
 
@@ -2450,4 +2534,60 @@ Instead, I could write it in my own words in my checklist. Specifically, I could
 
 Also, I should verify that each of my specific, re-worded rubric descriptions do indeed fulfill the rubric requirement. Therefore, I should chat with whomever will mark my assignment and **verify that I have properly understood each of the requirements**. This way, there is little chance of me poorly misreading a rubric section again.
 
-Finally, once the project is finished, I should re-read my work and objectively mark myself against my checklist. Only once I am fully satisfied that I have responded in the way that the marker expects me too, should I be comfortable submitting my work. Ideally, this strategy will eliminate marks lost because of not addressing a rubric. 
+Finally, once the project is finished, I should re-read my work and **objectively mark myself against my checklist**. Only once I am fully satisfied that I have responded in the way that the marker expects me too, should I be comfortable submitting my work. Ideally, this strategy will make it **highly unlikely that I skip a project requirement again**.
+
+
+
+### Secure Deployment to the cloud
+
+My knowledge of secure cloud deployment was okay but **it was far from properly implemented**.
+
+In my Flask app, I spun up one EC2 instance. On this EC2 instance, I hosted both the Flask app and the database on the backend. By hosting it on the cloud, it meant that it could be publicly available for users on the internet to access. My .env file held the sensitive data for my EC2 instance such as the username and password of my database. Additionally it had the name of the S3 bucket which held user images, along with the bucket's AWS access key id and AWS secret access key. I kept my environment variables on my local machine and made sure that git did not push my .env file to the cloud. I did this by writing down .env in my .gitignore file.
+
+
+
+I **neglected to implement more thorough security** because it wasn't a requirement in the rubric. I believe I should do it anyway in all future projects.
+
+**Firstly**, in my PostgreSQL configuration file *postgresql.conf*, I set the listening addresses to all.
+
+```
+listen_addresses = '*'
+```
+
+I believe this is quite insecure as it means that the **database will listen to everyone** trying to access the EC2 instance.
+
+**Secondly**, the client authentication file allows requests from any address to perform authentication. This means anyone could attempt to authenticate themselves as the owner of the database used for the Flask app. This is what I wrote in the *pg_hba.conf* file. Note that this is not good security practice. 
+
+```
+host    all             all             0.0.0.0/0               md5
+```
+
+
+
+Instead, I should have spun up **one EC2 instance for the Flask app and a different EC2 instance for the database**. The database should have only been listening to one address: the EC2 instance for the Flask app. Also the IP address of the EC2 instance which contains the Flask app should have been the only EC2 instance that can authenticate itself.
+
+
+
+**Thirdly**, when configuring the security group rules for the EC2 instance of the database, it should be restricted to **only accept requests from the EC2 instance which had the Flask app**. This would ensure that no one would be able to access the EC2 instance of the Flask app directly. Instead, they would only be allowed to access it from the EC2 instance with the Flask app.
+
+Below is what I had in my EC2 instance. As can be seen, any traffic of type SSH or PostgreSQL can access the EC2 instance with my database. Even AWS has a warning below which warns that all IP addresses can access the EC2 instance. Instead, the rules should have been set so that **only the IP address of the Flask App EC2 instance would be allowed access**.
+
+
+
+![security_groups](./docs/security_groups.PNG)
+
+
+
+**Fourthly**, I once accidentally pushed my .env file to GitHub because I had not yet written .env into my .gitignore file. It publicly exposed my access key and secret key to GitHub. This is **highly dangerous** as anyone can just go to my GitHub and find that .env file. AWS even sent me an email alerting me to this security concern.
+
+
+
+![AWS_warning](./docs/AWS_warning.PNG)
+
+
+
+AWS soon blocked me from spinning up anymore EC2 instances because they were concerned that someone else could hack into my account. Also they warned me that my account could be suspended if action wasn't taken to **delete or rotate the exposed AWS keys**.
+
+This highlights the upmost importance of ensuring that AWS keys do not get publicly published. In my case, my keys were publicly published on GitHub. If they accidently do get pushed to GitHub, those keys need to be **quickly deleted or rotated**. 
+
+Moreover, on AWS I should have checked my **CloudTrail log** for any unsanctioned activity after having exposed the keys. Unsanctioned activity could have included creating unauthorised IAM users, roles, policies or security credentials. All of these are a security concern that need to be looked for. 
