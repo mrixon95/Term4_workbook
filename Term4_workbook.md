@@ -42,7 +42,7 @@ Once you have clicked the button *Create repository* you will be redirected to a
 
 
 
-![create_new_repo_on_command_line](.\docs\create_new_repo_on_command_line.PNG)
+![create_new_repo_on_command_line](./docs/create_new_repo_on_command_line.PNG)
 
 
 
@@ -584,6 +584,8 @@ All websites use third-party services providers to host their websites. These th
 
 
 
+### Talk about project management
+
 
 
 **References**
@@ -609,6 +611,10 @@ https://www.approvedindex.co.uk/database-developers/databases-for-websites#:~:te
 
 
 A recent project that I worked on was my **Flask app API**.
+
+
+
+### Skills or knowledge needed
 
 The **first** skill I needed was knowing how to **set up a minimal Flask application** to get me started. A minimal flask app has an instance of a Flask class in a file and at least one route.
 
@@ -738,9 +744,13 @@ The **seventh** skill was **Project Management**. As opposed to the previous pie
 
 
 
-The **challenges** I encountered included how do I implement a many-to-many relationship in *Flask* and how do I join together two tables in a query. Despite looking up answers on *stack overflow* and looking through tutorials online, I still had problems overcoming these challenges. Therefore, I decided to ask my CCC instructors for their thoughts on how I may do it. 
+
+
+The **challenges** I encountered included how do I implement a **many-to-many relationship** in *Flask* and how do I join together two tables in a query. Despite looking up answers on *stack overflow* and looking through tutorials online, I still had problems overcoming these challenges. Therefore, I decided to ask my CCC instructors for their thoughts on how I may do it. 
 
 For the most part, I was able to **overcome challenges in the project through doing my own research**. I used many resources online, these included looking up Flask tutorials, finding similar questions that had been answered in *stack overflow*, watching video tutorials on *YouTube*, reading through the official flask documentation and finally reviewing lesson notes from the CCC course within *ed*. 
+
+There was one challenge that I was **unable to overcome** and that was reducing the time it took to set up the tests for all of my controllers. I realised that the `create_all ` command that I ran to create all the tables took a long time to execute. It was necessary to create tables to populate data with before testing my HTTP requests However, I needed to run it again and again for each new test file and it therefore took up a lot of time. Despite doing research into avoiding the need to repeat this command on each new test file, I was unable to overcome this challenge. I had to stop writing new test files because it already took 5 minutes to test my work history and study history controllers. Writing tests for all the controllers would have taken too much time. Fortunately, the tests were not directly assessed for the assignment so I did not lose marks on it. 
 
 
 
@@ -874,7 +884,7 @@ Below is what I had in my EC2 instance. As can be seen, any traffic of type SSH 
 
 
 
-**Fourthly**, I once accidentally pushed my .env file to GitHub because I had not yet written .env into my .gitignore file. It publicly exposed my access key and secret key to GitHub. This is **highly dangerous** as anyone can just go to my GitHub and find that .env file. AWS even sent me an email alerting me to this security concern.
+**Fourthly**, I once accidentally pushed my *.env* file to GitHub because I had not yet written *.env* into my *.gitignore* file. It publicly exposed my access key and secret key to GitHub. This is **highly dangerous** as anyone can just go to my GitHub and find that *.env* file. AWS even sent me an email alerting me to this security concern.
 
 
 
@@ -884,7 +894,7 @@ Below is what I had in my EC2 instance. As can be seen, any traffic of type SSH 
 
 AWS soon blocked me from spinning up anymore EC2 instances because they were concerned that someone else could hack into my account. Also they warned me that my account could be suspended if action wasn't taken to **delete or rotate the exposed AWS keys**.
 
-This highlights the upmost importance of ensuring that AWS keys do not get publicly published. In my case, my keys were publicly published on GitHub. If they accidently do get pushed to GitHub, those keys need to be **quickly deleted or rotated**. 
+This highlights the upmost importance of ensuring that AWS keys do not get publicly published. I should always start off a project by writing down the *.env* file in the *.gitignore* file before I push any code to GitHub. In my case, my keys were publicly published on GitHub. If they accidently do get pushed to GitHub, those keys need to be **quickly deleted or rotated**. 
 
 Moreover, on AWS I should have checked my **CloudTrail log** for any unsanctioned activity after having exposed the keys. Unsanctioned activity could have included creating unauthorised IAM users, roles, policies or security credentials. All of these are a security concern that need to be looked for. 
 
@@ -1010,7 +1020,7 @@ http://anh.cs.luc.edu/handsonPythonTutorial/loops.html
 
 
 
-**Type coercion**  is the implicit conversion of a value from one data type to another data type. It occurs where operands of an operator are of different types and **one operand needs to be automatically converted to an “equivalent” value** of the other operand’s type. 
+**Type coercion** is the implicit conversion of a value from one data type to another data type. It occurs where operands of an operator are of different types and **one operand needs to be automatically converted to an “equivalent” value** of the other operand’s type. 
 
 
 
@@ -1200,7 +1210,7 @@ In base 2, 0.1 is the infinitely repeating fraction 0.00011001100110011001100...
 
 On most machines, **floats are approximated using the first 53 bits** starting from the most significant bit.
 
-Therefore, the float value is only **accurate up until that 53th bit**.
+Therefore, the float value is only **accurate up until that 53rd bit**.
 
 
 
@@ -1628,9 +1638,33 @@ Here are the symbols used in python to do these set operations:
 
 
 
-For example, we can have a set of student names who study Maths and a set of student names who study English. We can perform set operations on the two sets.
+**Venn Diagrams** are very helpful in visualising what the set operations do. Below are some helpful diagrams that are available at *datacamp.com*. The pink, shaded areas are the values that the set operation will return.
 
-Here are some examples of using the set operations.
+
+
+![venn_diagrams](.\docs\venn_diagrams.png)
+
+
+
+Note that the order of sets A and B do not matter for the union, intersection and symmetric difference operations.
+
+A ⋃ B is equivalent to B ⋃ A
+
+A ∩ B is equivalent to B ∩ A
+
+A △ B is equivalent to B △ A  (note that ⊕ can also be used to denoted symmetric difference)
+
+
+
+**The order of A and B only matters for the difference operation.**
+
+A \ B is NOT equivalent to B \ A
+
+
+
+Below are some examples of using the set operations. For all the examples below, we have a set of students who study Maths and a set of students who study English. We can perform set operations on the two sets of students.
+
+Here are some examples of what the set operations can be used for.
 
 ```python
 maths_set = {'Anna', 'Brian', 'Cameron', 'David'}
@@ -2427,6 +2461,8 @@ https://docs.python.org/3/library/json.html
 
 
 
+### Here is the full code snippet. 
+
 ```python
 import random
 
@@ -2462,7 +2498,7 @@ for model in models:
 
 
 
-### Comments on what the code snippets does on each line.
+### Comments on what the code snippet does on each line.
 
 <b>Lines 1 - 8</b>
 
@@ -2496,9 +2532,9 @@ https://realpython.com/python-main-function/
 
 
 
-**Lines 4 and 5** - The `Car` class has the reserved`__init__` method. The `__init__` method is known as a constructor and when a new instance of the `Car` class is created, the `__init__` method is called so that the statements within the `__init__` method are executed. The `__init__` method is used to initialise the attributes of an object. In this case, the value of one instance variable is set in the `__init__` method. The instance variable is`car_name`and its value is set for just that particular instance by using `self`. 
+**Lines 4 and 5** - The `Car` class has the reserved`__init__` method. The `__init__` method is known as a **constructor** and when a new instance of the `Car` class is created, the `__init__` method is called so that the statements within the `__init__` method are executed. The `__init__` method is used to initialise the attributes of an object. In this case, the value of one instance variable is set in the `__init__` method. The instance variable is`car_name`and its value is set for just that particular instance by using `self`. 
 
-The first parameter of a method is named `self` by convention. `self` is used to represent that particular instance of the class. Therefore by using `self.car_name`, the instance variable `car_name` is set for just that particular instance. The new car object has it's `car_name` attribute set equal to the value of the `brand` argument.
+The first parameter of a method is named `self` by convention. `self` is used to represent that particular instance of the class. Therefore by using `self.car_name`, the instance variable `car_name` is set for **just that particular instance**. The new car object has it's `car_name` attribute set equal to the value of the `brand` argument.
 
 **References**
 
@@ -2538,13 +2574,13 @@ class Model(Car):
 
 
 
-**Line 10** - The lines define another class called `Model`. The `model` class is defined to inherit from the base class called `Car` which has previously been defined. Inheritance in Python means that attributes and methods in the base class are inherited into the derived class. In this example, the base class is `Car` and the derived class is `Model`, therefore the `Car`'s attributes and methods are available to be accessed by the `Model` class. Specially, the `Car`'s attribute `car_name` and method `present` are accessible to the `Model` class.
+**Line 10** - The lines define another class called `Model`. The `model` class is defined to inherit from the base class called `Car` which has previously been defined. Inheritance in Python means that **attributes and methods in the base class are inherited into the derived class**. In this example, the base class is `Car` and the derived class is `Model`, therefore the `Car`'s attributes and methods are available to be accessed by the `Model` class. Specially, the `Car`'s attribute `car_name` and method `present` are accessible to the `Model` class.
 
 
 
 **Line 11** - The line has the method that initialises the `Model` object. The first parameter is `self` and refers to the particular instance of the model class that is being instantiated. There are two other parameters named brand and mod. 
 
-**Line 12** - The super() function returns a temporary, proxy superclass object. In this case, the temporary object is of type `Car` and therefore gives the `Model` class access to the `Car` methods. The init method is then called on the `Car` object. This initialises the attributes of `Car`. The value of the `brand` attribute is passed to the`Car` class and is assigned to the `car_name` attribute. Since we inherit attributes from the base class `Car`, we can then access the `car_name` attribute from the `Model` class
+**Line 12** - The super() function returns a temporary, proxy superclass object. In this case, the temporary object is of type `Car` and therefore gives the `Model` class access to the `Car` methods. The `__init__` method is then called on the `Car` object. This initialises the attributes of `Car`. The value of the `brand` attribute is passed to the`Car` class and is assigned to the `car_name` attribute. Since we inherit attributes from the base class `Car`, we can then access the `car_name` attribute from the `Model` class
 
 **References**
 
@@ -2578,11 +2614,11 @@ def random_int_from_interval(min,max):
 
 **Line 19** - An empty list is assigned to the `models` variable. In the next two lines, the list will be populated with the integers 1980, 1981, 1982, ..., 2019.
 
-**Line 20 and 21** - The `range` object can accept a start, stop and step value. However, in this case, only the stop value of 40 is provided, therefore, the start value defaults to 0 and the step value defaults to 1 because they were not specified. The `range()`object returns an iterator of integers which will be used to generate the integers from the start value, up to but not including the stop value. The start value is 0, the stop value is 40, and the step value is 1 so each integer from 0 to 39 will be generated one at a time. 
+**Line 20 and 21** - The `range` object can accept a **start, stop and step value**. However, in this case, only the stop value of 40 is provided, therefore, the **start value defaults to 0 and the step value defaults to 1** because they were not specified. The `range()`object returns an iterator of integers which will be used to generate the integers from the start value, up to but **not including the stop value**. The start value is 0, the stop value is 40, and the step value is 1 so each integer from 0 to 39 will be generated one at a time. 
 
 The `for loop` iterates through each integer generated by the iterator and assigns it to the `i` variable. Each time `i` is assigned a new integer, the statement within the `for loop` is executed. The sum of `i` and 1980 is appended to the end of the models list. Once again, the value of `i` is incremented and the sum of `i` and 1980 is appended to the end of the models list. This process repeats until the value of `i` reaches 39, then for the last time, the sum of `i` and 1980 is appended to the end of the models list.
 
-**Line 23 and 24** - The `random_int_from_interval` function takes two arguments, the min and max. Both arguments must be numbers. The function will return a random integer between those two numbers, inclusive. 
+**Line 23 and 24** - The `random_int_from_interval` function takes two arguments, the min and max. Both arguments must be numbers. The function will return a random integer between those two numbers, **inclusive**. 
 
 In our case `random_int_from_interval(0,2)` will return either a 0, 1 or 2. The probability of returning each integer is the same. There are 3 different integers, therefore each integer has a 1/3 or 33.3% chance of being returned. 
 
@@ -2610,15 +2646,19 @@ for model in models:
 
 
 
-**INTENTIAL TYPO**!!!!!!! Say what will happen because of the type and then say what it should be.
-
 **Line 26** - The `for loop` iterates through each item in the `models` list and assigns the value to the `model` variable. The `models` list is populated with integers from 1980 to 2019. Therefore, the `mode`l variable will be assigned the value of 1980 during the first iteration of the loop, 1981 for the second iteration of the loop, and so on until it is assigned the value of 2019 for the final iteration of the loop.
 
 **Line 27** - The `len(makes)` function returns the number of items in the `makes` list. There are 3 items so it returns 3. Therefore the `make` variable is going to be randomly assigned one of the strings in the `makes` list. It will be assigned to either "Ford", "Holden" or "Toyota". 
 
-**Line 28** - The `len(model)` function returns the number of items in the `models` list. There are 40 items so it returns 40. Therefore the `models` variable is going to be randomly assigned one of the integers in the `models` list. It will be assigned to one of the integers between 0 and 39 inclusive.
+**Line 28** - There appears to be a **typo** here. `len(makes)` returns the number of makes which is 2 in total. However, there are 40 different models in the models list which range from 1980 to 2019. As it currently is written, the random integer function will return either the number 0, 1 or 2. This means that the model that is randomly chosen **can only be from the year 1980, 1981 or 1982**. **This ignores all the other models from year 1983 until 2019. I strongly suspect that this is an unintentional mistake!**
 
-**Line 29** - The `Model` class takes two arguments in order to instantiate an object. Those two arguments are `make` and `model`. Once the `model` object is instantiated, it's reference is assigned to the `my_car` variable. 
+**It would be more intuitive if the `len(makes)` was instead replaced with `len(models)`.**
+
+`len(models)` would return 40. **Therefore all of the 40 different models from 1980 until 2019 may be randomly chosen** and subsequently be assigned to the `model` variable.
+
+Assuming that this apparent typo is fixed, the `models` variable would be randomly assigned to one of the integers in the `models` list ranging from 1980 to 2019.
+
+**Line 29** - The `Model` class takes **two arguments** in order to instantiate an object. Those two arguments are `make` and `model`. Once the `model` object is instantiated, it's reference is assigned to the `my_car` variable. 
 
 **Line 30** - The `show()` method is called upon the `my_car` object. The functionality of the show method is covered in the explanation of lines 16 and 17. Essentially, Those two arguments are `make` and `model`. Once the `model` object is instantiated, it's reference is assigned to the `my_car` variable.
 
