@@ -584,7 +584,25 @@ All websites use third-party services providers to host their websites. These th
 
 
 
-### Talk about project management
+### Project management
+
+Finally, project management is an important, non-technical skill that a team of developers need. Usually, a team of developers have one software project manager who acts as their project leader. Before starting the project, the project manager needs to talk to stakeholders and understand their objectives. In the small business website scenario, the project leader would be responsible for liaising with the small business owner to understand what features are needed in the website. In addition, they would need to talk about constraints such as how much money they can spend on building it and when it needs to be completed by. After having understood both the requirements and the constraints of the project, the project manager can go about planning out the tasks required to complete the project and estimating the time, money and resources needed to build the website. 
+
+Not only does the project manager have to **plan out the roadmap of all the activities to be done and make sure it is within time and budget constraints, but also the project manager must manage risk.**
+
+For example, here are some very plausible **risks** that may arise in the small business website scenario:
+
+- a senior web developer leaves half-way through the project
+- the small business owner changes the requirements of the project
+- a feature on the website takes a lot more time and resources to implement than originally planned for
+
+The project manager must make note of all these possible risks which may occur during the development of the small business website. These risks should be categorised according to their severity and likelihood of occurring. Plans should be made to deal with those risks and minimise their side-effects.  
+
+In order to ensure the project is going to plan, **activity status reports and milestone checks** can be made. The activity status reports can track how far along each task is and be marked as yet-to-start, in progress or completed. The milestone checklist can be used to see how many tasks have been completed and how that compares to what was originally planned for at that time point in the project timeline. 
+
+Project management is crucial but it is sometimes overlooked and can lead to disaster. For instance, the team of web developers could be highly skilled in developing professional websites and have all the technical skills required, however without a competent project manager, they may go over budget, run out of time, duplicate tasks or fail to properly address the project's objective. All of these potential problems could result in the developers delivering an incomplete, rushed or buggy website that does not satisfy the business owner's expectations. Therefore, although project management is not a technical skill, it cannot be ignored.
+
+
 
 
 
@@ -601,6 +619,8 @@ https://www.wpbeginner.com/wp-tutorials/how-to-make-a-small-business-website-ste
 https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript
 
 https://www.approvedindex.co.uk/database-developers/databases-for-websites#:~:text=If%20your%20site%20content%20changes,a%20database%20can%20ease%20administration.&text=In%20this%20case%2C%20a%20database,with%20content%20from%20the%20database.
+
+https://www.tutorialspoint.com/software_engineering/software_project_management.htm
 
 
 
@@ -645,9 +665,9 @@ $ flask run
 
 
 
-**Secondly**, I needed to know how to **write HTML templates with jinja2 placeholders** and **understand how the jinja2 syntax works**. Jinja2 placeholders can be replaced with actual values when a HTML template is rendered. It means that python objects can be passed in as arguments when the template is rendered so that the contents of the python object are displayed in the HTML file.
+**Secondly**, I needed to know how to **write HTML templates with jinja2 placeholders** and **understand how the jinja2 syntax works**. Jinja2 placeholders can be replaced when a HTML template is rendered. It means that python objects can be passed in as arguments when the template is rendered so that the contents of the python object are displayed in the HTML file.
 
-HTML files need to be saved in a directory called templates for the problem to work.
+HTML files need to be saved in a directory called templates.
 
 Here's an example
 
@@ -716,7 +736,7 @@ The most popular Python ORM is SQLAlchemy and that is what I learned to use in m
 
 
 
-The **fourth** important area of knowledge was knowing what **Database Migrations** are and how I could use them effectively in my Flask app. **Basically, they save all revisions of the database table definitions and provide methods for upgrading or downgrading a database to a new or back to an older revision.** This is crucial to be able to understand and implement since changes to a database are risky in that there may be a loss of valuable data if a mistake is made. Database migrations automatically figure out which commands need to be ran in order to update the schema of the database without losing any of the valuable data.
+The **fourth** important area of knowledge was knowing what **Database Migrations** are and how I could use them effectively in my Flask app. **Basically, they save all revisions of the database table definitions and provide methods for upgrading or downgrading a database to a new version or back to an older revision.** This is crucial to be able to understand and implement since changes to a database are risky in that there may be a loss of valuable data if a mistake is made. Database migrations automatically figure out which commands need to be ran in order to update the schema of the database without losing any of the valuable data.
 
 For example, say we have already written a database full of tables and important custom data has since been inserted into the tables by customers. We now want the database to capture credit card information. This would involve a new table in the database for the credit card details as well as a new relationship between the credit card details table and the user table. Instead of being risky and trying to manually redefine the tables in the database, it would be much safer to create a new database migration file and run it. The flask-migration package will automatically generate the code needed to adjust the tables so that the new table and relationship are added whilst no customer data is lost. Also, if we wish to undo the changes, the flask migration package has automatically written the code needed to do that. All we would need to do is run the downgrade function.
 
@@ -1182,7 +1202,7 @@ print(1.8e308)
 
 Floats are also very precise. In computer hardware, **floating point numbers are approximated by using a sum of base 2 fractions**.
 
-For example, here are some examples of how decimal fractions are represented as a sum of base 2 fractions
+For example, here are some examples of how decimal fractions are represented as a sum of base 2 fractions.
 
 
 
@@ -1257,7 +1277,7 @@ z = complex(a,b)
 # Output is 7
 print (z.real) 
 
-# Output is 4
+# Output is -4
 print (z.imag) 
 ```
 
@@ -1638,7 +1658,7 @@ Here are the symbols used in python to do these set operations:
 
 
 
-**Venn Diagrams** are very helpful in visualising what the set operations do. Below are some helpful diagrams that are available at *datacamp.com*. The pink, shaded areas are the values that the set operation will return.
+**Venn Diagrams** are very helpful in visualising what the set operations do. Below are some helpful diagrams that are available at *datacamp.com*. The pink, shaded areas represent the set of all values that the set operation will return.
 
 
 
@@ -1646,7 +1666,7 @@ Here are the symbols used in python to do these set operations:
 
 
 
-Note that the order of sets A and B do not matter for the union, intersection and symmetric difference operations.
+It is worth noting that the order of sets A and B do not matter for the union, intersection and symmetric difference operations.
 
 A ⋃ B is equivalent to B ⋃ A
 
